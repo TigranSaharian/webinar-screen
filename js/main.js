@@ -5,7 +5,7 @@ $(document).ready(function(){
         usertype: 'lecturer',
         fullname: 'Jon Smith',
         isOnline: true,
-        avatarUrl: null // /assest/image/profile-image.jpg
+        avatarUrl: null // /assets/image/profile-image.jpg
     }
 
     GetPreloader('TR_PRELOADER_TEXT', 'index.html', 'TR_START_WEBINAR')

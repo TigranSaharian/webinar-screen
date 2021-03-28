@@ -3,18 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="live webinars and communication">
+    <meta name="theme-color" content="#222F3E">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mindalay</title>
+    <link rel="apple-touch-icon" href="/assets/favicon_io/apple-touch-icon.png">
+    <link rel="shortcut icon" href="/assets/favicon_io/favicon-16x16.png" type="image/x-icon">
 
     <link rel="stylesheet" href="/styles/css/main-styles.css">
     <link rel="stylesheet" href="/styles/css/video.css">
-    <link rel="stylesheet" href="/styles/css/side-menu.css">
-    <link rel="stylesheet" href="/styles/css/screen-action-wrapper.css">
     <link rel="stylesheet" href="/styles/css/preloader.css">
     <link rel="stylesheet" href="/styles/css/popup-menu.css">
     <link rel="stylesheet" href="/styles/css/footer.css">
     <link rel="stylesheet" href="/styles/css/alert.css">
     <link rel="stylesheet" href="/styles/css/button.css">
+
+    <link rel="manifest" href="manifest.json">
 </head>
 <body>
     <div id="preloader"></div>
@@ -50,7 +54,7 @@
                     </div>
                     <div class="mindalay--chat-message-wrapper mindalay--chat-other-message">
                         <div class="mindalay--chat-member-wrapper">
-                            <div class="mindalay--chat-member member-online-status isOnline" style="background-image: url(/assest/image/profile-image.jpg);"></div>
+                            <div class="mindalay--chat-member member-online-status isOnline" style="background-image: url(/assets/image/profile-image.jpg);"></div>
                         </div>
                         <div class="mindalay--chat-message">
                             <p class="mindalay--chat-message-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam cum dolorem aperiam dolore itaque maiores?</p>
@@ -65,7 +69,7 @@
                     </div>
                     <div class="mindalay--chat-message-wrapper mindalay--chat-other-message">
                         <div class="mindalay--chat-member-wrapper">
-                            <div class="mindalay--chat-member member-online-status isOnline" style="background-image: url(/assest/image/profile-image.jpg);"></div>
+                            <div class="mindalay--chat-member member-online-status isOnline" style="background-image: url(/assets/image/profile-image.jpg);"></div>
                         </div>
                         <div class="mindalay--chat-message">
                             <p class="mindalay--chat-message-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam cum dolorem aperiam dolore itaque maiores?</p>
@@ -80,7 +84,7 @@
                     </div>
                     <div class="mindalay--chat-message-wrapper mindalay--chat-other-message">
                         <div class="mindalay--chat-member-wrapper">
-                            <div class="mindalay--chat-member member-online-status isOnline" style="background-image: url(/assest/image/profile-image.jpg);"></div>
+                            <div class="mindalay--chat-member member-online-status isOnline" style="background-image: url(/assets/image/profile-image.jpg);"></div>
                         </div>
                         <div class="mindalay--chat-message">
                             <p class="mindalay--chat-message-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam cum dolorem aperiam dolore itaque maiores?</p>
@@ -95,7 +99,7 @@
                     </div>
                     <div class="mindalay--chat-message-wrapper mindalay--chat-other-message">
                         <div class="mindalay--chat-member-wrapper">
-                            <div class="mindalay--chat-member member-online-status isOnline" style="background-image: url(/assest/image/profile-image.jpg);"></div>
+                            <div class="mindalay--chat-member member-online-status isOnline" style="background-image: url(/assets/image/profile-image.jpg);"></div>
                         </div>
                         <div class="mindalay--chat-message">
                             <p class="mindalay--chat-message-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam cum dolorem aperiam dolore itaque maiores?</p>
@@ -105,11 +109,15 @@
                 </div>
                 <div class="mindalay--chat-input-wrapper">
                     <div class="mindalay--chat-send-button"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 448 448" style="enable-background:new 0 0 448 448;" xml:space="preserve"><g>	<g>		<polygon points="0.213,32 0,181.333 320,224 0,266.667 0.213,416 448,224   "/>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></div>
-                    <input type="text" class="mindalay--input" placeholder="">
+                    <label for="mindalay--chat-message"></label>
+                    <input type="text" id="mindalay--chat-message" class="mindalay--input" placeholder="type text">
                 </div>
             </div>
         </div>
     </div>
+    
+    <script defer src="/js/index.js"></script>
+
     <script defer src="/js/jquery/jquery-v3.6.0.js"></script>
     <script defer src="/js/config.js?v=1.0.0"></script>
     <script defer src="/js/HtmlElements-component.js?v=1.0.0"></script>
