@@ -181,13 +181,6 @@ li {
   #popup--chat-button {
     display: none !important;
   }
-}
-@media (max-width: 767.98px) {
-  .mindalay--more-popup-user-name {
-    font-size: 15px;
-  }
-}
-@media (min-width: 576px) {
   .mindalay--more-options {
     bottom: calc(100% -65px);
     right: 10px !important;
@@ -207,7 +200,10 @@ li {
     height: 50px;
   }
 }
-@media (max-width: 575.98px) {
+@media (max-width: 767.98px) {
+  .mindalay--more-popup-user-name {
+    font-size: 15px;
+  }
   .mindalay--right-menu .mindalay--popup-container {
     width: 100vw;
   }

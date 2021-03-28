@@ -19,6 +19,13 @@ button[type="button"] {
 button[type="button"]:focus {
   outline: none;
 }
+.aaa {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(50%);
+  z-index: 100;
+}
 *:focus {
   outline: none;
 }
