@@ -153,8 +153,13 @@ li {
   color: lightgoldenrodyellow;
   text-align: right;
 }
+.mindalay--more-popup-user-image,
+.mindalay--more-popup-default-image {
+  width: 60px;
+  height: 60px;
+}
 .move-container {
-  margin-right: 320px;
+  margin-right: 370px;
   transition: 0.3s;
 }
 .transform-menu {
@@ -187,17 +192,12 @@ li {
   }
   .mindalay--popup .mindalay--popup-container {
     border-radius: 3px;
-    width: 320px;
+    width: 370px;
   }
   .mindalay--popup .mindalay--popup-container .online::after,
   .mindalay--popup .mindalay--popup-container .offline::after {
     width: 13px;
     height: 13px;
-  }
-  .mindalay--popup .mindalay--popup-container .mindalay--more-popup-user-image,
-  .mindalay--popup .mindalay--popup-container .mindalay--more-popup-default-image {
-    width: 50px;
-    height: 50px;
   }
 }
 @media (max-width: 767.98px) {
@@ -213,7 +213,7 @@ li {
   }
   .mindalay--more-options .mindalay--popup-container .mindalay--popup-body {
     overflow-y: auto;
-    height: calc(100vh - 135px);
+    height: calc(100vh - 155px);
   }
   .mindalay--more-options .mindalay--popup-container .online::after,
   .mindalay--more-options .mindalay--popup-container .offline::after {
@@ -223,11 +223,6 @@ li {
   .mindalay--popup {
     right: 0;
     top: 0;
-  }
-  .mindalay--popup .mindalay--more-popup-user-image,
-  .mindalay--popup .mindalay--more-popup-default-image {
-    width: 40px;
-    height: 40px;
   }
   .mindalay--btn-start {
     display: none;

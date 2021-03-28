@@ -102,10 +102,10 @@ hr {
   width: 100%;
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 16px;
 }
 .mindalay--popup .mindalay--popup-container .mindalay--popup-body li .popup-button svg {
-  width: 20px;
+  width: 25px;
   height: auto;
   margin-right: 10px;
 }
@@ -127,13 +127,13 @@ hr {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
 }
 .mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-message {
   background-color: #e7f2fa;
-  font-size: 12px;
+  font-size: 13px;
   border-radius: 3px;
   padding: 10px;
 }

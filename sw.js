@@ -10,12 +10,13 @@ self.addEventListener("install", e => {
                 './styles/css/popup-menu.css', 
                 './styles/css/preloader.css',
                 './assets/favicon_io/apple-touch-icon.png', 
-                './assets/favicon_io/favicon-16x16.png']);
+                './assets/favicon_io/favicon-16x16.png'
+            ]);
         })
     )
 })
 
-self.addEventListener("fetch", e => {
+self.addEventListener("fetch", function(e){
     e.respondWith(
         caches.match(e.request).then(response => {
             return response || fetch(e.request)

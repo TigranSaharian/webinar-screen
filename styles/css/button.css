@@ -19,7 +19,7 @@ button[type="button"] {
 button[type="button"]:focus {
   outline: none;
 }
-.aaa {
+.pwa-btn {
   position: fixed;
   top: 15px;
   left: 50%;
