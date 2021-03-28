@@ -1,0 +1,122 @@
+.main-font {
+  font-family: 'Didact Gothic', sans-serif;
+  font-family: 'Montez', cursive;
+  font-family: 'Montserrat', sans-serif;
+}
+.transition {
+  transition: 0.3s;
+}
+hr {
+  opacity: 0.7;
+}
+button[type="button"] {
+  transition: 0.3s;
+  cursor: pointer;
+}
+button[type="button"]:focus {
+  outline: none;
+}
+*:focus {
+  outline: none;
+}
+.mindalay--btn {
+  border-radius: 3px;
+  border: 1px solid #B53471;
+  padding: 10px 20px;
+  font-family: 'Didact Gothic', sans-serif;
+  font-family: 'Montez', cursive;
+  font-family: 'Montserrat', sans-serif;
+}
+.mindalay--btn-primary {
+  background-color: #ffffff;
+  color: #B53471;
+}
+.mindalay--btn-primary:hover {
+  background-color: #B53471;
+  color: #ffffff;
+}
+.mindalay--btn-dark {
+  background-color: #B53471;
+  color: #ffffff;
+}
+.mindalay--btn-dark:hover {
+  background-color: #a12e65;
+}
+.mindalay--footer-btn {
+  background-color: #222F3E;
+  border: none;
+  padding: 15px 30px;
+  margin: 0;
+  box-sizing: content-box;
+  line-height: 0;
+  position: relative;
+}
+.mindalay--footer-btn svg {
+  width: 25px;
+  height: 25px;
+}
+.mindalay--footer-btn svg * {
+  fill: #ffffff;
+}
+.mindalay--footer-btn:hover {
+  background-color: #2b3b4e;
+}
+.mindalay--button-has-notification {
+  position: relative;
+}
+.mindalay--button-has-notification:before,
+.mindalay--button-has-notification:after {
+  content: '';
+  position: absolute;
+  padding: 5px;
+  border: 2px solid #ffffff;
+  background: rgba(6, 180, 0, 0.6);
+  border-radius: 50px;
+  opacity: 0;
+}
+.mindalay--button-has-notification:before {
+  transform: scale(1);
+  animation: blink 1.6s infinite linear;
+}
+.mindalay--button-has-notification:after {
+  animation: blink 1.6s 1.2s infinite linear;
+}
+@keyframes blink {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  33.33333% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+}
+@media (max-width: 767.98px) {
+  .mindalay--btn-end #chat-button {
+    display: none;
+  }
+  .mindalay--button-has-notification:before,
+  .mindalay--button-has-notification:after {
+    right: 20px;
+  }
+  .mindalay--btn {
+    font-size: 12px;
+  }
+}
+@media (min-width: 768px) {
+  .mindalay--more-popup #popup--chat-button {
+    display: none;
+  }
+  .mindalay--button-has-notification:before,
+  .mindalay--button-has-notification:after {
+    top: 20%;
+    right: 30%;
+  }
+  .mindalay--btn {
+    font-size: 14px;
+  }
+}

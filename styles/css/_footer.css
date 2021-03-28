@@ -1,0 +1,49 @@
+.main-font {
+  font-family: 'Didact Gothic', sans-serif;
+  font-family: 'Montez', cursive;
+  font-family: 'Montserrat', sans-serif;
+}
+.transition {
+  transition: 0.3s;
+}
+.box-shadow {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+hr {
+  opacity: 0.7;
+}
+.mindalay--footer {
+  min-height: 40px;
+  position: fixed;
+  bottom: 0;
+  z-index: 3;
+}
+.mindalay--footer .mindalay--footer-container {
+  width: 100vw;
+  background-color: #222F3E;
+}
+.mindalay--footer .mindalay--footer-container .mindalay--btn-group {
+  display: flex;
+  align-items: center;
+}
+.mindalay--footer .mindalay--footer-container .mindalay--btn-group .mindalay--btn-wrapper:nth-child(1) {
+  flex: 10%;
+  margin-left: 10px;
+}
+.mindalay--footer .mindalay--footer-container .mindalay--btn-group .mindalay--btn-wrapper:nth-child(2) {
+  flex: 80%;
+}
+.mindalay--footer .mindalay--footer-container .mindalay--btn-group .mindalay--btn-wrapper:nth-child(3) {
+  flex: 10%;
+}
+.mindalay--footer .mindalay--footer-container .mindalay--btn-group .mindalay--btn-start {
+  text-align: left;
+}
+.mindalay--footer .mindalay--footer-container .mindalay--btn-group .mindalay--btn-center {
+  text-align: center;
+}
+.mindalay--footer .mindalay--footer-container .mindalay--btn-group .mindalay--btn-end {
+  text-align: right;
+  display: flex;
+  align-items: center;
+}

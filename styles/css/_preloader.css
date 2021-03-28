@@ -1,0 +1,107 @@
+.main-font {
+  font-family: 'Didact Gothic', sans-serif;
+  font-family: 'Montez', cursive;
+  font-family: 'Montserrat', sans-serif;
+}
+.transition {
+  transition: 0.3s;
+}
+.box-shadow {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+hr {
+  opacity: 0.7;
+}
+#preloader .loader-container small {
+  position: fixed;
+  bottom: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  text-align: center;
+  z-index: 20;
+}
+#preloader .loader-container .load {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*change these sizes to fit into your project*/
+  width: 70px;
+  height: 70px;
+  z-index: 20;
+}
+#preloader .loader-container .load hr {
+  border: 0;
+  margin: 0;
+  width: 40%;
+  height: 40%;
+  position: absolute;
+  border-radius: 50%;
+  animation: spin 2s ease infinite;
+  opacity: 1;
+}
+#preloader .loader-container .load :first-child {
+  background: #2980B9;
+  animation-delay: -1.5s;
+}
+#preloader .loader-container .load :nth-child(2) {
+  background: #B53471;
+  animation-delay: -1s;
+}
+#preloader .loader-container .load :nth-child(3) {
+  background: #2980B9;
+  animation-delay: -0.5s;
+}
+#preloader .loader-container .load :last-child {
+  background: #B53471;
+}
+#preloader .loader-container .preloader-button {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 40px;
+  z-index: 20;
+}
+#preloader .loader-container .preloader-leave-action {
+  position: absolute;
+  right: 30px;
+  top: 15px;
+  color: #222F3E;
+  text-transform: capitalize;
+  text-decoration: none;
+  width: fit-content;
+  z-index: 20;
+  font-size: 14px;
+}
+#preloader .loader-container::after {
+  content: '';
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: #ffffff;
+}
+@keyframes spin {
+  0%,
+  100% {
+    transform: translate(0);
+  }
+  25% {
+    transform: translate(160%);
+  }
+  50% {
+    transform: translate(160%, 160%);
+  }
+  75% {
+    transform: translate(0, 160%);
+  }
+}
+@media (max-width: 575px) {
+  .preloader-button {
+    width: calc(100% - 30px);
+  }
+}

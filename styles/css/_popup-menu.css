@@ -1,0 +1,193 @@
+.main-font {
+  font-family: 'Didact Gothic', sans-serif;
+  font-family: 'Montez', cursive;
+  font-family: 'Montserrat', sans-serif;
+}
+.transition {
+  transition: 0.3s;
+}
+.box-shadow {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+hr {
+  opacity: 0.7;
+}
+.mindalay--more-options {
+  bottom: 65px;
+  z-index: 2;
+  display: none;
+}
+.mindalay--more-options .mindalay--popup-header {
+  padding: 15px 20px;
+}
+.mindalay--right-menu {
+  top: 0;
+  right: 0;
+  z-index: 1;
+  transform: translateX(120%);
+  transition: 0.3s;
+}
+.mindalay--right-menu .mindalay--popup-container {
+  height: calc(100vh - 55px);
+}
+.mindalay--right-menu .mindalay--popup-container .mindalay--popup-header {
+  padding: 25px;
+}
+.mindalay--right-menu .mindalay--popup-container .mindalay--popup-body {
+  position: absolute;
+  bottom: 0;
+}
+.mindalay--right-menu .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container {
+  overflow: auto;
+  height: calc(100vh - 170px);
+}
+.mindalay--popup {
+  position: fixed;
+}
+.mindalay--popup .mindalay--popup-container {
+  background-color: #ffffff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-header {
+  border-bottom: 1px solid #cfcfcf;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-header .mindalay--more-popup-default-image {
+  background-color: #B53471;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-header .mindalay--more-popup-user-image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-header .mindalay--more-popup-user-info {
+  padding: 0 15px;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-header .mindalay--more-popup-user-info .mindalay--more-popup-user-name {
+  font-weight: 600;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-header .mindalay--more-popup-user-info .mindalay--more-popup-user-type {
+  text-transform: capitalize;
+  opacity: 0.8;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-header .mindalay--popup-close-button {
+  position: absolute;
+  padding: 0 20px;
+  right: 0;
+  top: 0%;
+  display: flex;
+  background-color: #faeef4;
+  height: 100%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-body {
+  padding: 5px 0;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-body li .popup-button {
+  border: none;
+  background-color: #ffffff;
+  cursor: pointer;
+  padding: 15px 20px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-body li .popup-button svg {
+  width: 20px;
+  height: auto;
+  margin-right: 10px;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-body li .popup-button svg * {
+  fill: #222F3E;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-body li .popup-button:hover {
+  background-color: #ebeff4;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper {
+  padding: 10px 15px;
+  display: flex;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-member-wrapper {
+  margin: 10px;
+  height: fit-content;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-member-wrapper .mindalay--chat-member {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-message {
+  background-color: #e7f2fa;
+  font-size: 12px;
+  border-radius: 3px;
+  padding: 10px;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-message-date {
+  font-size: 10px;
+  font-weight: 600;
+  margin-top: 5px;
+  display: block;
+  text-align: right;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-input-wrapper {
+  padding: 10px 15px;
+  position: relative;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-input-wrapper .mindalay--input {
+  padding-right: 35px !important;
+  border-color: #B53471;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-input-wrapper .mindalay--chat-send-button {
+  box-sizing: content-box;
+  width: fit-content;
+  position: absolute;
+  background-color: #ffffff;
+  padding: 5px;
+  line-height: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 16px;
+  cursor: pointer;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-input-wrapper .mindalay--chat-send-button svg {
+  width: 25px;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-input-wrapper .mindalay--chat-send-button svg * {
+  fill: #B53471;
+}
+.mindalay--popup .mindalay--popup-container .chat-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0;
+}
+.mindalay--popup .mindalay--popup-container .chat-header svg {
+  padding: 15px;
+}
+.mindalay--popup-close-button svg {
+  width: 15px;
+  background-color: #faeef4;
+}
+.mindalay--popup-close-button svg * {
+  fill: #d877a5;
+}
+.mindalay--popup-close-button:hover {
+  background-color: #f8e6ee;
+}
+.mindalay--popup-close-button:hover svg * {
+  fill: #B53471;
+}
