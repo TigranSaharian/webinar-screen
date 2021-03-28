@@ -95,6 +95,7 @@ hr {
 }
 .mindalay--popup .mindalay--popup-container .mindalay--popup-body {
   padding: 5px 0;
+  width: 100%;
 }
 .mindalay--popup .mindalay--popup-container .mindalay--popup-body li .popup-button {
   border: none;
@@ -125,7 +126,14 @@ hr {
   margin: 10px;
   height: fit-content;
 }
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-member-wrapper .mindalay--chat-member {
+.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-member-wrapper .mindalay--chat-member-default-image {
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  display: flex;
+}
+.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-member-wrapper .mindalay--chat-member,
+.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-member-wrapper .mindalay--chat-member-default-image {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -133,11 +141,13 @@ hr {
   height: 30px;
   border-radius: 50%;
   position: relative;
+  background-color: #B53471;
 }
 .mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-member-wrapper .member-online-status::after {
   width: 8px;
   height: 8px;
-  bottom: -5px;
+  bottom: -4px;
+  right: -4px;
 }
 .mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-message {
   background-color: #e7f2fa;

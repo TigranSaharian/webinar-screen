@@ -45,6 +45,9 @@ hr {
 ::-webkit-scrollbar-thumb:hover {
   background: #a12e65;
 }
+body {
+  background-color: #2b3b4e;
+}
 body,
 h1,
 h2,
@@ -106,8 +109,8 @@ a {
   border-radius: 50%;
   background-color: #06B400;
   border: 2.5px solid #ffffff;
-  width: 13px;
-  height: 13px;
+  width: 11px;
+  height: 11px;
 }
 .online::after {
   background-color: #06B400;
@@ -147,8 +150,6 @@ li {
 }
 .mindalay--main-container {
   background-color: #2b3b4e;
-  width: 100vw;
-  height: 100vh;
   transition: 0.3s;
 }
 .mindalay--main-container p {
@@ -160,14 +161,14 @@ li {
   width: 60px;
   height: 60px;
 }
-.move-container {
-  margin-right: 370px;
-  transition: 0.3s;
-}
 .transform-menu {
   transform: translateX(0) !important;
 }
 @media (min-width: 768px) {
+  .move-container {
+    margin-right: 400px;
+    transition: 0.3s;
+  }
   .mindalay--element-title:hover::after {
     content: attr(rel);
     position: absolute;
@@ -194,7 +195,7 @@ li {
   }
   .mindalay--popup .mindalay--popup-container {
     border-radius: 3px;
-    width: 370px;
+    width: 400px;
   }
 }
 @media (max-width: 767.98px) {
@@ -211,11 +212,6 @@ li {
   .mindalay--more-options .mindalay--popup-container .mindalay--popup-body {
     overflow-y: auto;
     height: calc(100vh - 155px);
-  }
-  .mindalay--more-options .mindalay--popup-container .online::after,
-  .mindalay--more-options .mindalay--popup-container .offline::after {
-    width: 10px;
-    height: 10px;
   }
   .mindalay--popup {
     right: 0;

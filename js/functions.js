@@ -33,6 +33,10 @@ function GetInitialScreen(user) {
     return true;
 }
 
+function GetUserOnlineStyle(user){
+    return user.isOnline == true ? 'online' : 'offline';
+}
+
 function CreateDarkButton(buttonContainer, text){
     let button = new Button(mindalayBtnDark, null, text, null, false, text);
     buttonContainer.prepend(button[0]);

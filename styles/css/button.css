@@ -62,8 +62,8 @@ button[type="button"]:focus {
   position: relative;
 }
 .mindalay--footer-btn svg {
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  height: 30px;
 }
 .mindalay--footer-btn svg * {
   fill: #ffffff;
