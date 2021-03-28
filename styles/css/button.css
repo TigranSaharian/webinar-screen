@@ -114,7 +114,7 @@ button[type="button"]:focus {
     right: 20px;
   }
   .mindalay--btn {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 @media (min-width: 768px) {
@@ -127,6 +127,6 @@ button[type="button"]:focus {
     right: 30%;
   }
   .mindalay--btn {
-    font-size: 14px;
+    font-size: 16px;
   }
 }

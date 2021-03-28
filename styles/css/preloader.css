@@ -20,6 +20,7 @@ hr {
   width: 100%;
   text-align: center;
   z-index: 20;
+  color: #ffffff;
 }
 #preloader .loader-container .load {
   position: absolute;
@@ -46,15 +47,15 @@ hr {
   animation-delay: -1.5s;
 }
 #preloader .loader-container .load :nth-child(2) {
-  background: #B53471;
+  background: #ffffff;
   animation-delay: -1s;
 }
 #preloader .loader-container .load :nth-child(3) {
-  background: #2980B9;
+  background: #B53471;
   animation-delay: -0.5s;
 }
 #preloader .loader-container .load :last-child {
-  background: #B53471;
+  background: #ffffff;
 }
 #preloader .loader-container .preloader-button {
   position: absolute;
@@ -68,12 +69,12 @@ hr {
   position: absolute;
   right: 30px;
   top: 15px;
-  color: #222F3E;
+  color: #ffffff;
   text-transform: capitalize;
   text-decoration: none;
   width: fit-content;
   z-index: 20;
-  font-size: 14px;
+  font-size: 16px;
 }
 #preloader .loader-container::after {
   content: '';
@@ -83,7 +84,7 @@ hr {
   top: 0;
   left: 0;
   z-index: 10;
-  background-color: #ffffff;
+  background-color: #2b3b4e;
 }
 @keyframes spin {
   0%,
