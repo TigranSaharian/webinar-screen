@@ -5,7 +5,6 @@
     "background_color" : "#222F3E",
     "theme_color" : "#a12e65",
     "display" : "standalone",
-    "orientation": "portrait",
     "icons" : [
         {
             "src" : "/assets/favicon_io/adroind-chrome.png",
