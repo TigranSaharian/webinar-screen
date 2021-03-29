@@ -1,3 +1,63 @@
+var user = {
+    id : 1,
+    firstname: 'Jon',
+    lastname: 'Smith',
+    usertype: 'lecturer',
+    fullname: 'Jon Smith',
+    isOnline: true,
+    avatarUrl: 'assets/image/profile-image.jpg'
+}
+
+var users = [
+    {
+        id : 1,
+        firstname: 'Jon',
+        lastname: 'Smith',
+        usertype: 'lecturer',
+        fullname: 'Jon Smith',
+        isOnline: true,
+        avatarUrl: 'assets/image/profile-image.jpg'
+    },
+    {
+        id : 2,
+        firstname: 'Daniel',
+        lastname: 'Yoshimi',
+        usertype: 'Student',
+        fullname: 'Daniel Yoshimi',
+        isOnline: true,
+        avatarUrl: null
+    }
+]
+
+var messages = [
+    {
+        text : 'dasdbhasb asdbasd nbdjabda dasdask kasldjasd lasndjasdj jlashdjlasdljsa asdas',
+        date : 'May 12 2021',
+        user : {
+            id : 1,
+            firstname: 'Jon',
+            lastname: 'Smith',
+            usertype: 'lecturer',
+            fullname: 'Jon Smith',
+            isOnline: true,
+            avatarUrl: 'assets/image/profile-image.jpg'
+        }
+    },
+    {
+        text : 'dasdbhasb asdbasd nbdjabda asdaskdjh bkjasdksadjkh jkasdkjashdjk',
+        date : 'May 12 2021',
+        user : {
+            d : 2,
+            firstname: 'Daniel',
+            lastname: 'Yoshimi',
+            usertype: 'Student',
+            fullname: 'Daniel Yoshimi',
+            isOnline: true,
+            avatarUrl: 'assets/image/profile-image.jpg'
+        }
+    }
+]
+
 // variables
 var isLecturer = true;
 var isMicrophoneMuted = false;
@@ -26,7 +86,7 @@ const mindalayBtnDark = 'mindalay--btn-dark mindalay--btn';
 const popupPrefix = 'popup--';
 
 // element id
-const morePopupContainer = '#mindalay--more-popup-container';
+const morePopupContainer = '#popup-body';
 
 //footer icons
 const microphone_unmute_icon = '<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 43.61 38.86"><path d="M34.27,20a1.38,1.38,0,1,0-2.75,0,9.72,9.72,0,0,1-19.43,0,1.38,1.38,0,1,0-2.75,0A12.46,12.46,0,0,0,20.43,32.45v3.66h-5a1.38,1.38,0,0,0,0,2.75H28.17a1.38,1.38,0,1,0,0-2.75h-5V32.45A12.47,12.47,0,0,0,34.27,20Z"/><path d="M21.8-.09a7.66,7.66,0,0,0-7.65,7.65V20A7.66,7.66,0,1,0,29.46,20V7.56A7.66,7.66,0,0,0,21.8-.09Z"/></svg>';

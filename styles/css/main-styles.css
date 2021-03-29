@@ -147,6 +147,7 @@ li {
   border: 1px solid #9c9c9c;
   width: -webkit-fill-available;
   border-radius: 3px;
+  font-size: 16px !important;
 }
 .mindalay--main-container {
   background-color: #2b3b4e;

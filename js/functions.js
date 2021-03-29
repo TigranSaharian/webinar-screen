@@ -23,7 +23,6 @@ function GetInitialScreen(user) {
     }else{
         GetMemberScreen();
     } 
-
     // micarophone button rule
     GetScreenSpeakerStatus()
     // speaker button rule
@@ -189,4 +188,8 @@ function OpenRightMenu(){ // TODO use toggle name for menu content | chat, membe
     let toggleName = rightMenu.children(`div`).attr('data-toggle')
     rightMenu.addClass('transform-menu');
     mainContainer.addClass('move-container');
+}
+
+function ClearInput(input){
+    input.val('');
 }
