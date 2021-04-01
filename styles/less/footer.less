@@ -1,0 +1,32 @@
+@import url("../less/constants.less");
+
+.mindalay--footer{
+    min-height: 40px;
+    position: fixed;
+    bottom: 0;
+    z-index: 3;
+    .mindalay--footer-container{
+        width: 100vw;
+        background-color: @mindalay--dark-color;
+        .mindalay--btn-group{
+            display: flex;
+            align-items: center;
+            .mindalay--btn-wrapper{
+                &:nth-child(1){flex: 10%; margin-left: 10px;}
+                &:nth-child(2){flex: 80%;}
+                &:nth-child(3){flex: 10%;}
+            }
+            .mindalay--btn-start{
+                text-align: left;
+            }
+            .mindalay--btn-center{
+                text-align: center;
+            }
+            .mindalay--btn-end{
+                text-align: right;
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+}

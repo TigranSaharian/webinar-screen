@@ -1,0 +1,132 @@
+@import url("../less/constants.less");
+
+button[type="button"]{
+    .transition;
+    cursor: pointer;
+    &:focus{
+        outline: none;
+    }
+}
+.pwa-btn{
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(50%);
+    z-index: 100;
+}
+
+*:focus{
+    outline: none;
+}
+
+.mindalay--btn{
+    border-radius: @border-radius-3;
+    border: 1px solid @mindalay--brand-color;
+    padding: 10px 20px;
+    .main-font;
+}
+
+.mindalay--btn-primary{
+    background-color: @mindalay--white-color;
+    color: @mindalay--brand-color;
+    &:hover{
+        background-color: @mindalay--brand-color;
+        color: @mindalay--white-color;
+    }
+}
+
+.mindalay--btn-dark{
+    background-color: @mindalay--brand-color;
+    color: @mindalay--white-color;
+    &:hover{
+        background-color: lighten(@mindalay--brand-color, -5%);
+    }
+}
+
+.mindalay--footer-btn{
+    background-color: @mindalay--dark-color;
+    border: none;
+    padding: 15px 30px;
+    margin: 0;
+    box-sizing: content-box;
+    line-height: 0;
+    position: relative;
+    svg{
+        width: 30px;
+        height: 30px;
+        *{
+            fill: @mindalay--white-color;
+        }
+    }
+    &:hover{
+        background-color: lighten(@mindalay--dark-color, 5%);
+    }
+}
+
+.mindalay--button-has-notification {
+    position: relative;    
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      padding: 5px;
+      border: 2px solid @mindalay--white-color;
+      background: rgba(@mindalay--green-color, 0.6);
+      border-radius: 50px;
+      opacity: 0;
+    }
+
+    &:before {
+      transform: scale(1);
+      animation: blink 1.6s infinite linear;
+    }
+
+    &:after {
+      animation: blink 1.6s 1.2s infinite linear;
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+        transform: scale(0.4);
+    }
+    33.33333% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+}
+
+@media(max-width: 767.98px){
+    .mindalay--btn-end{
+        #mindalay-chat{
+            display: none;
+        }
+    }
+    .mindalay--button-has-notification{
+        &:before,
+        &:after {
+            right: 20px;
+        }
+    }
+    .mindalay--btn{
+        font-size: @text-size-mobile;
+    }
+}
+
+@media(min-width:768px){
+    .mindalay--button-has-notification {
+        &:before,
+        &:after {
+          top: 20%;
+          right: 30%;
+        }
+    }
+    .mindalay--btn{
+        font-size: @text-size-screen;
+    }
+}

@@ -1,0 +1,72 @@
+@import url("../less/constants.less");
+
+#preloader{
+  .loader-container{
+    small{
+        position:fixed;
+        top: 50%;
+        left:50%;
+        transform:translate(-50%, -50%);
+        width: 100%;
+        text-align: center;
+        z-index: 20;
+        color: @mindalay--white-color;
+    }
+    .load{
+        position:absolute;
+        top:40%;
+        left:50%;
+        transform:translate(-50%, -50%);
+        /*change these sizes to fit into your project*/
+        width:70px;
+        height:70px;
+        z-index: 20;
+        hr{border:0;margin:0;width:40%;height:40%;position:absolute;border-radius:50%;animation:spin 2s ease infinite; opacity: 1;}
+    }
+    .load :first-child{background:@mindalay--blue-color;animation-delay:-1.5s}
+    .load :nth-child(2){background:@mindalay--white-color;animation-delay:-1s}
+    .load :nth-child(3){background:@mindalay--brand-color;animation-delay:-0.5s}
+    .load :last-child{background:@mindalay--white-color}
+    .preloader-button{
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 15px 60px;
+      z-index: 20;
+    }
+    .preloader-leave-action{
+        position: absolute;
+        right: 30px;
+        top: 15px;
+        color: @mindalay--white-color;
+        text-transform: capitalize;
+        text-decoration: none;
+        width: fit-content;
+        z-index: 20;
+        font-size: @text-size-screen;
+    }
+    &::after{
+      content: '';
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      z-index: 10;
+      background-color:lighten( @mindalay--dark-color, 5%);
+    }
+  }
+}
+  @keyframes spin{
+    0%,100%{transform:translate(0)}
+    25%{transform:translate(160%)}
+    50%{transform:translate(160%, 160%)}
+    75%{transform:translate(0, 160%)}
+  }
+
+  @media(max-width: 575px){
+    .preloader-button{
+        width: calc(100% - 30px);
+    }
+  }
