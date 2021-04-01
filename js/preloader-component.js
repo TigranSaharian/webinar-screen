@@ -12,7 +12,6 @@ function GetPreloader(preloader_message, preloader_leave_location, preloader_but
     leave.attr('data-id', 'TR_LEAVE_WEBINAR');
 
     const button = new Button('start-webinar', `${mindalayBtnDark} ${translation} ${preloader_btn}`, '', true, TRANSLATION_KEY_ID, TR_START_WEBINAR )
-    console.log(button[0]);
     for (let index = 0; index < 4; index++) {
         const loader_item = new HrLine()
         loader.append(loader_item);
