@@ -1,6 +1,9 @@
 $(document).ready(function(){
 
-    GetPreloader('TR_PRELOADER_TEXT', 'index.html', 'TR_START_WEBINAR')
+    GetPreloader('TR_PRELOADER_INITIAL_TEXT', 'index.html', 'TR_START_WEBINAR')
+    setCookie('language', 'en', 5)
+    getLanguages();
+    getTranslations();
     
     ///////////////////////////////////////////////////////////////////
     $(document).on('click', '.mindalay--footer-btn', function(){
@@ -9,14 +12,20 @@ $(document).ready(function(){
             let button_action = button.attr('id')
             switch (button_action) {
                 case microphone_muted_btn_name:
+                    ToggleMicrophoneButton(isMicrophoneMuted, button)
+                    break;
                 case microphone_unmute_btn_name:
                     ToggleMicrophoneButton(isMicrophoneMuted, button)
                     break;
                 case speaker_muted_btn_name:
+                    ToggleSpeakerButton(isSpeakerMuted, button)
+                    break;
                 case speaker_unmute_btn_name:
                     ToggleSpeakerButton(isSpeakerMuted, button)
                     break;
                 case video_muted_btn_name:
+                    ToggleVideoButton(isVideoMuted, button)
+                    break;
                 case video_unmute_btn_name:
                     ToggleVideoButton(isVideoMuted, button)
                     break;

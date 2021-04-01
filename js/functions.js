@@ -29,6 +29,7 @@ function GetInitialScreen(user) {
     GetRTCMicrophoneButton()
     // video button rule
     GetRTCVideoButton();
+    SetTranslationToHTML();
     return true;
 }
 
@@ -36,9 +37,9 @@ function GetUserOnlineStyle(user){
     return user.isOnline == true ? 'online' : 'offline';
 }
 
-function CreateDarkButton(buttonContainer, text){
-    let button = new Button(mindalayBtnDark, null, text, null, false, text);
-    buttonContainer.prepend(button[0]);
+function CreateDarkButton(buttonContainer, id){
+    let button = new Button('', `${mindalayBtnDark} ${translation} max-content`, '', true, TRANSLATION_KEY_ID, id)
+    buttonContainer.prepend(button);
 }
 
 function GetLecturerScreen(){
@@ -49,35 +50,34 @@ function GetMemberScreen(){
     CreateFooterIconButton(footerIconGroupContainer, raise_a_hand_icon,'TR_HAND', false, raise_a_hand_btn_name);
 }
 
-function CreateFooterIconButton(buttonContainer, icon, translation, isToggleable, buttonName, hasNotification = false){
-    let button = new Button(mindalayFooterBtn, icon, buttonName, null, false, null)
-    if(buttonName === more_btn_name) button.addClass('more-options-button');
+function CreateFooterIconButton(buttonContainer, icon, translationValue, isToggleable, id, hasNotification = false){
+    let button = new Button(id, `${mindalayFooterBtn} ${translation}`, icon, true, TRANSLATION_KEY_ALT, translationValue)
+    if(id === more_btn_name) button.addClass('more-options-button');
     if(isToggleable){
         button.addClass('mindalay--element-title');
         button.attr('data-toggle', isToggleable)
-        button.attr('rel', translation);
     }
     if(hasNotification) button.addClass('mindalay--button-has-notification');
     buttonContainer.prepend(button);
 }
 
-function CreatePopupButton(icon, text, name, isHidden){
+function CreatePopupButton(icon, text, id, isShow){
     let listRow = new HtmlElement('li', null, null);
-    let button = new Button(popupButton, icon, name, popupPrefix, isHidden, text)
-    button.attr('data-toggle', name);
-    if(name === webinar_end_btn_name) button.addClass('red-color')
-    if(name === chat_btn_name) button.addClass('mindalay--button-has-notification')
+    let button = new Button(id, `${popupButton} ${translation}`, icon, isShow, TRANSLATION_KEY_ID, text);
+    // button.attr('data-toggle', id);
+    if(id === webinar_end_btn_name) button.addClass('red-color')
+    if(id === chat_btn_name) button.addClass('mindalay--button-has-notification')
     listRow.append(button);
-    if(name === logout_btn_name || name === report_btn_name) {
+    if(id === logout_btn_name || id === report_btn_name) {
         listRow.prepend(new HrLine());
     }
     morePopup.find(morePopupContainer).append(listRow);
 }
 
 // toggle footer button
-function ToggleFooterIconButton(button, icon, btn_title){
+function ToggleFooterIconButton(button, icon, translationValue){
     button.children('svg').remove()
-    button.attr('rel', btn_title);
+    button.attr('alt', translationValue);
     button.append(icon);
     GetTranslation();
 }
@@ -85,10 +85,10 @@ function ToggleFooterIconButton(button, icon, btn_title){
 // toggle video button
 function ToggleVideoButton(videoStatus, button){
     if(videoStatus){
-        ToggleFooterIconButton(button, video_muted_icon, 'TR_VIDEO_MUTED')
+        ToggleFooterIconButton(button, video_muted_icon)
         isVideoMuted = false;
     }else{
-        ToggleFooterIconButton(button, video_unmute_icon, 'TR_VIDEO_UNMUTE')
+        ToggleFooterIconButton(button, video_unmute_icon)
         isVideoMuted = true;
     }
 }
@@ -96,10 +96,10 @@ function ToggleVideoButton(videoStatus, button){
 // toggle mic button
 function ToggleMicrophoneButton(microphoneStatus, button){
     if(microphoneStatus){
-        ToggleFooterIconButton(button, microphone_muted_icon, 'TR_MICROPHONE_MUTED')
+        ToggleFooterIconButton(button, microphone_muted_icon)
         isMicrophoneMuted = false;
     }else{
-        ToggleFooterIconButton(button, microphone_unmute_icon, 'TR_MICROPHONE_UNMUTE')
+        ToggleFooterIconButton(button, microphone_unmute_icon)
         isMicrophoneMuted = true;
     }
 }
@@ -107,10 +107,10 @@ function ToggleMicrophoneButton(microphoneStatus, button){
 // toggle speaker button
 function ToggleSpeakerButton(speakerState, button){
     if(speakerState){
-        ToggleFooterIconButton(button, speaker_muted_icon, 'TR_SPEAKER_MUTED')
+        ToggleFooterIconButton(button, speaker_muted_icon)
         isSpeakerMuted = false;
     }else{
-        ToggleFooterIconButton(button, speaker_unmute_icon, 'TR_SPEAKER_UNMUTE')
+        ToggleFooterIconButton(button, speaker_unmute_icon)
         isSpeakerMuted = true;
     }
 }
@@ -127,34 +127,34 @@ function CreateMoreOptionsPopup(popup_icon_list, user){
                 console.log(element);
                 switch (element) {
                     case file_btn_name:
-                        CreatePopupButton(file_icon, 'TR_FILE', file_btn_name, false)
+                        CreatePopupButton(file_icon, 'TR_FILE', file_btn_name, true)
                         break;
                     case members_btn_name:
-                        CreatePopupButton(members_icon, 'TR_MEMBERS', members_btn_name, false)
+                        CreatePopupButton(members_icon, 'TR_MEMBERS', members_btn_name, true)
                         break;
                     case webinar_end_btn_name:
-                        if(isLecturer) CreatePopupButton(webinar_end_icon, 'TR_WEBINAR_END', webinar_end_btn_name, false)
+                        if(isLecturer) CreatePopupButton(webinar_end_icon, 'TR_WEBINAR_END', webinar_end_btn_name, true)
                         break;
                     case screen_share_btn_name:
-                        CreatePopupButton(screen_share_icon, 'TR_SCREEN_SHARE', screen_share_btn_name, false)
+                        CreatePopupButton(screen_share_icon, 'TR_SCREEN_SHARE', screen_share_btn_name, true)
                         break;
                     case text_board_btn_name:
-                        CreatePopupButton(text_board_icon, 'TR_TEXT_BOARD', text_board_btn_name, false)
+                        CreatePopupButton(text_board_icon, 'TR_TEXT_BOARD', text_board_btn_name, true)
                         break;
                     case blackboard_btn_name:
-                        CreatePopupButton(blackboard_icon, 'TR_BLACKBOARD', blackboard_btn_name, false)
+                        CreatePopupButton(blackboard_icon, 'TR_BLACKBOARD', blackboard_btn_name, true)
                         break;
                     case report_btn_name:
-                        CreatePopupButton(report_icon, 'TR_REPORT', report_btn_name, false)
+                        CreatePopupButton(report_icon, 'TR_REPORT', report_btn_name, true)
                         break;
                     case settings_btn_name:
-                        CreatePopupButton(settings_icon, 'TR_SETTINGS', settings_btn_name, false)
+                        CreatePopupButton(settings_icon, 'TR_SETTINGS', settings_btn_name, true)
                         break;
                     case logout_btn_name:
-                        CreatePopupButton(logout_icon, 'TR_LOGOUT', logout_btn_name, false)
+                        CreatePopupButton(logout_icon, 'TR_LOG_OUT', logout_btn_name, true)
                         break;
                     case chat_btn_name:
-                        CreatePopupButton(chat_icon, 'TR_CHAT', chat_btn_name, false)
+                        CreatePopupButton(chat_icon, 'TR_CHAT', chat_btn_name, true)
                         break;
                     default:
                         break;
@@ -199,14 +199,12 @@ function ChatScrolToBottom(){
 }
 
 function GetChat(){
-    var response = GetChatContainer(messages, 'mindalay--chat');
+    var response = GetChatContainer(messages);
     if(response && chat_RightMenu.children().length === 0){
-        console.log(response);
         chat_RightMenu.append(response)
         ToggleRightMenu()
     }else{
         ToggleRightMenu()
     }
-    console.log(response[0]);
     ChatScrolToBottom();
 }

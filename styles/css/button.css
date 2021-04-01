@@ -29,6 +29,9 @@ button[type="button"]:focus {
 *:focus {
   outline: none;
 }
+.max-content {
+  width: max-content;
+}
 .mindalay--btn {
   border-radius: 3px;
   border: 1px solid #B53471;

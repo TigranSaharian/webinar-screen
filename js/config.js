@@ -58,6 +58,22 @@ var messages = [
     }
 ]
 
+const TRANSLATION_KEY_ID = 'data-id'
+const TRANSLATION_KEY_ALT = 'data-alt'
+const TRANSLATION_KEY_PLACEHOLDER = 'data-placeholder'
+
+
+//translations
+const TR_START_WEBINAR = 'TR_START_WEBINAR'
+const TR_END_WEBINAR = 'TR_END_WEBINAR'
+const TR_LEAVE_WEBINAR = 'TR_LEAVE_WEBINAR'
+const TR_TYPEMESSAGE = 'TR_TYPEMESSAGE'
+
+
+
+//constants
+const API_URL_DOMAIN_KEY = 'https://api.webinarsystems.ru';
+
 // variables
 var isLecturer = true;
 var isMicrophoneMuted = false;
@@ -65,6 +81,7 @@ var isSpeakerMuted = false;
 var isVideoMuted = false;
 var hideElement = false;
 var isWebinarStarted = false;
+var languages = [];
 
 //elements ids
 const footerIconGroupContainer = $('#mindalay-footer-center-btn-group');
@@ -82,6 +99,8 @@ const popupButton = 'popup-button';
 const mindalayButton = 'mindalay--btn';
 const mindalayBtnPrimary = 'mindalay--btn-primary mindalay--btn';
 const mindalayBtnDark = 'mindalay--btn-dark mindalay--btn';
+const translation = 'translation';
+const preloader_btn = 'preloader-button';
 
 // constant texts
 const popupPrefix = 'popup--';

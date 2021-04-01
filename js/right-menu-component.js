@@ -1,4 +1,4 @@
-function GetChatContainer(messages, pleaceholder = 'TR_TYPE_TEXT'){
+function GetChatContainer(messages){
     let chatContent = GetChatMessages(messages) // get existed messages
     let menuHeader = GetSideMenuHeader() // get side menu header
     
@@ -17,10 +17,11 @@ function GetChatContainer(messages, pleaceholder = 'TR_TYPE_TEXT'){
     let sendButton = new HtmlElement('div', 'mindalay--chat-send-message-button', null);
     sendButton.attr('id', 'send-message-button');
     let input = $('<input>')
-        .attr('class', 'mindalay--input')
+        .attr('class', 'mindalay--input translation')
         .attr('id', 'mindalay--chat-message')
         .attr('type', 'text')
-        .attr('placeholder', pleaceholder)
+        .attr('data-placeholder', TR_TYPEMESSAGE)
+        .attr('placeholder', 'Type a message...')
     inputWrapper.append(sendButton.append(send_message_icon))
     inputWrapper.append(input)
     popupBody.append(inputWrapper)

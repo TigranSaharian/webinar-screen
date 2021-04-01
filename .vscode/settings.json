@@ -1,5 +1,6 @@
 {
     "less.compile": {
       "out": "..\\..\\styles\\css\\"
-    }
+    },
+    "liveServer.settings.port": 5502
   }

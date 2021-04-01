@@ -201,7 +201,7 @@ li {
     transition: 0.3s;
   }
   .mindalay--element-title:hover::after {
-    content: attr(rel);
+    content: attr(alt);
     position: absolute;
     right: 50%;
     top: -15%;
@@ -213,6 +213,7 @@ li {
     text-align: center;
     color: #ffffff;
     z-index: 1;
+    width: max-content;
   }
   .mindalay--more-popup-user-name {
     font-size: 17px;

@@ -157,7 +157,7 @@ ul,li{
     .mindalay--element-title{
         &:hover{
             &::after{
-                content: attr(rel);
+                content: attr(alt);
                 position: absolute;
                 right: 50%;
                 top: -15%;
@@ -169,6 +169,7 @@ ul,li{
                 text-align: center;
                 color: @mindalay--white-color;
                 z-index: 1;
+                width: max-content;
             }
         }
     }
