@@ -136,6 +136,36 @@ li {
 .d-grid {
   display: grid !important;
 }
+.mindalay--brand-color-background {
+  background-color: #B53471 !important;
+}
+.mindalay--blue-color-background {
+  background-color: #2980B9 !important;
+}
+.mindalay--gray-color-background {
+  background-color: #9c9c9c !important;
+}
+.mindalay--dark-color-background {
+  background-color: #222F3E !important;
+}
+.mindalay--green-color-background {
+  background-color: #06B400 !important;
+}
+.brand-color {
+  color: #B53471 !important;
+}
+.blue-color {
+  color: #2980B9 !important;
+}
+.green-color {
+  color: #06B400 !important;
+}
+.dark-color {
+  color: #222F3E !important;
+}
+.gray-color {
+  color: #9c9c9c !important;
+}
 .red-color {
   color: #DA0006;
 }

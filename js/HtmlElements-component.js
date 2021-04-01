@@ -8,23 +8,23 @@ class HrLine{
 class HtmlElement{
     constructor(element, className, text){
         element = $(document.createElement(element));
-        if(className !== null) $(element).attr('class', className)// element[0].className = className;
-        if(text !== null)element[0].innerText = text;
+        if(className !== null) $(element).attr('class', className)
+        if(text !== null) element[0].innerText = text;
         return element;
     }
 }
 
 class Button{
-    element = $('<button></button>');
+    element = $(document.createElement('button'));
     type = 'button';
     constructor(className = null, icon = null, id = null, prefix = null, isHidden = false, text = null){
-        this.element[0].setAttribute('type', this.type);
-        if(className !== null) this.element[0].className = className;
-        if(icon !== null) this.element[0].innerHTML = icon;
-        if(prefix !== null && id !== null) this.element[0].setAttribute('id', `${prefix + id}`);
-        if(prefix === null && id !== null) this.element[0].setAttribute('id', id);
-        if(isHidden == true) this.element[0].className += ' d-none'
-        if(text !== null) this.element[0].innerHTML += text;
+        this.element.attr('type', this.type);
+        if(className !== null) this.element.attr('class', className);
+        if(icon !== null) this.element.append(icon);
+        if(prefix !== null && id !== null) this.element.attr('id', `${prefix + id}`);
+        if(prefix === null && id !== null) this.element.attr('id', id);
+        if(isHidden == true) this.element.addClass('d-none')
+        if(text !== null) this.element.append(text);
         return this.element;
     }
 }

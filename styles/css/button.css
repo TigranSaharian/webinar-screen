@@ -106,7 +106,7 @@ button[type="button"]:focus {
   }
 }
 @media (max-width: 767.98px) {
-  .mindalay--btn-end #chat-button {
+  .mindalay--btn-end #mindalay-chat {
     display: none;
   }
   .mindalay--button-has-notification:before,
@@ -118,9 +118,6 @@ button[type="button"]:focus {
   }
 }
 @media (min-width: 768px) {
-  .mindalay--more-popup #popup--chat-button {
-    display: none;
-  }
   .mindalay--button-has-notification:before,
   .mindalay--button-has-notification:after {
     top: 20%;

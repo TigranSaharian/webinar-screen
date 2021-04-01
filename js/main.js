@@ -36,22 +36,15 @@ $(document).ready(function(){
         let screenStatus = GetInitialScreen(user);
         if(screenStatus) RemovePreloader();
     });
-    $(document).on('click', '#chat-button', function(){
-        var response = GetChatContainer(messages, 'mindalay--chat');
-        if(response && $('#right-menu').children().length === 0){
-            $('#right-menu').append(response)
-            ToggleRightMenu()
-        }else{
-            ToggleRightMenu()
-            setTimeout(() => { $('#right-menu').children().remove();}, 600)
-        }
+    $(document).on('click', '#mindalay-chat', function(){
+        GetChat();
     })
     $(document).on('click', '.close-right-menu', function(){
-        ToggleRightMenu()
+        HideRightMenu()
     })
-    $(document).on('click', '#popup--chat-button', function(){
+    $(document).on('click', '#popup--mindalay-chat', function(){
         TogglePopup()
-        OpenRightMenu()
+        GetChat()
     })
     $(document).on('click', '#send-message-button', function(){
         let messageText = $(this).closest('.mindalay--chat-input-wrapper').find('input[type=text]').val();
@@ -71,8 +64,12 @@ $(document).ready(function(){
         if(messageWrapper){
             ClearInput($(this))
             $('#chat-message-container').append(messageWrapper);
+            ChatScrolToBottom()
         }
     })
+    $(document).on('click', '#popup--members', function(){
+
+    });
 
     /////////////////////////////////////////////
     $(document).on('keypress','#mindalay--chat-message', function (e) {
@@ -84,16 +81,4 @@ $(document).ready(function(){
            return false;  
          }
     });   
-
-    
-    function Typing() {
-        $('#chat-message-container').addClass('chat-container-to-up');
-        $('#type-chat-animation').addClass('typing-transform-bottom');
-    }
-    
-   
-    // $(document).on('keyup','#mindalay--chat-message', function(event) {
-    //     let interval = setInterval(Typing, 2000)
-    //     console.log(interval);
-    // });
 })

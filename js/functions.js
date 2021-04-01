@@ -42,40 +42,32 @@ function CreateDarkButton(buttonContainer, text){
 }
 
 function GetLecturerScreen(){
-    CreateDarkButton(footerRightButtonContainer,'TR_WEBINAR_END')
+    CreateDarkButton(footerLeftButtonContainer,'TR_WEBINAR_END')
 }
 
 function GetMemberScreen(){
     CreateFooterIconButton(footerIconGroupContainer, raise_a_hand_icon,'TR_HAND', false, raise_a_hand_btn_name);
 }
 
-
-function CreateFooterIconButton(buttonContainer, icon, buttonTitle, isToggleable, buttonName, hasNotification = false){
-    try {
-        let button = new Button(mindalayFooterBtn, icon, buttonName, null, false, null)
-        if(!button) throw ''
-        let element = button[0];
-        if(buttonName === more_btn_name) element.classList.add('more-options-button');
-        element.setAttribute('data-toggle', isToggleable)
-        if(buttonTitle){
-            element.classList.add('mindalay--element-title');
-            element.setAttribute('rel', buttonTitle);
-        }
-        if(hasNotification) element.classList.add('mindalay--button-has-notification');
-        buttonContainer.prepend(element);
-    } catch (error) {
-        LogError(error)
-        setTimeout(() =>{CreateFooterIconButton(buttonContainer, icon, buttonTitle, isToggleable, buttonName, hasNotification = false)},1000)
+function CreateFooterIconButton(buttonContainer, icon, translation, isToggleable, buttonName, hasNotification = false){
+    let button = new Button(mindalayFooterBtn, icon, buttonName, null, false, null)
+    if(buttonName === more_btn_name) button.addClass('more-options-button');
+    if(isToggleable){
+        button.addClass('mindalay--element-title');
+        button.attr('data-toggle', isToggleable)
+        button.attr('rel', translation);
     }
+    if(hasNotification) button.addClass('mindalay--button-has-notification');
+    buttonContainer.prepend(button);
 }
 
 function CreatePopupButton(icon, text, name, isHidden){
     let listRow = new HtmlElement('li', null, null);
     let button = new Button(popupButton, icon, name, popupPrefix, isHidden, text)
-    button[0].setAttribute('data-toggle', name);
-    if(name === webinar_end_btn_name) button[0].className += ' red-color'
-    if(name === chat_btn_name) button[0].className += ' mindalay--button-has-notification'
-    listRow.append(button[0]);
+    button.attr('data-toggle', name);
+    if(name === webinar_end_btn_name) button.addClass('red-color')
+    if(name === chat_btn_name) button.addClass('mindalay--button-has-notification')
+    listRow.append(button);
     if(name === logout_btn_name || name === report_btn_name) {
         listRow.prepend(new HrLine());
     }
@@ -132,9 +124,13 @@ function CreateMoreOptionsPopup(popup_icon_list, user){
             morePopup.append(popup);
             for (let index = 0; index < popup_icon_list.length; index++) {
                 const element = popup_icon_list[index];
+                console.log(element);
                 switch (element) {
                     case file_btn_name:
                         CreatePopupButton(file_icon, 'TR_FILE', file_btn_name, false)
+                        break;
+                    case members_btn_name:
+                        CreatePopupButton(members_icon, 'TR_MEMBERS', members_btn_name, false)
                         break;
                     case webinar_end_btn_name:
                         if(isLecturer) CreatePopupButton(webinar_end_icon, 'TR_WEBINAR_END', webinar_end_btn_name, false)
@@ -178,18 +174,39 @@ function OpenPopup(){
     morePopup.fadeIn(100)
 }
 
-function ToggleRightMenu(){ // TODO use toggle name for menu content | chat, members ...
-    let toggleName = rightMenu.children(`div`).attr('data-toggle')
-    rightMenu.toggleClass('transform-menu');
+function ToggleRightMenu(){ 
+    chat_RightMenu.toggleClass('transform-menu');
     mainContainer.toggleClass('move-container');
 }
 
-function OpenRightMenu(){ // TODO use toggle name for menu content | chat, members ...
-    let toggleName = rightMenu.children(`div`).attr('data-toggle')
-    rightMenu.addClass('transform-menu');
+function OpenRightMenu(){
+    chat_RightMenu.addClass('transform-menu');
     mainContainer.addClass('move-container');
+}
+
+function HideRightMenu(){
+    chat_RightMenu.removeClass('transform-menu');
+    mainContainer.removeClass('move-container');
 }
 
 function ClearInput(input){
     input.val('');
+}
+
+function ChatScrolToBottom(){
+    var element = document.getElementById("chat-message-container");
+    element.scrollTop = element.scrollHeight;
+}
+
+function GetChat(){
+    var response = GetChatContainer(messages, 'mindalay--chat');
+    if(response && chat_RightMenu.children().length === 0){
+        console.log(response);
+        chat_RightMenu.append(response)
+        ToggleRightMenu()
+    }else{
+        ToggleRightMenu()
+    }
+    console.log(response[0]);
+    ChatScrolToBottom();
 }

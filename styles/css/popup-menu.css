@@ -25,7 +25,7 @@ hr {
   right: 0;
   z-index: 1;
   transform: translateX(120%);
-  transition: 0.6s;
+  transition: 0.3s;
 }
 .mindalay--right-menu .mindalay--popup-container {
   height: calc(100vh - 55px);
@@ -39,10 +39,8 @@ hr {
 }
 .mindalay--right-menu .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container {
   overflow: auto;
-  padding: 15px 0;
-  height: calc(100vh - 210px);
-  display: inline;
-  align-items: flex-end;
+  padding: 10px 0;
+  height: calc(100vh - 200px);
 }
 .mindalay--right-menu .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .chat-container-to-up {
   transition: 0.3s;
@@ -53,7 +51,7 @@ hr {
   justify-content: flex-end;
 }
 .mindalay--right-menu .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--currnet-user .mindalay--chat-message {
-  background-color: #faeef4 !important;
+  background-color: #e7f2fa !important;
 }
 .mindalay--popup {
   position: fixed;
@@ -164,7 +162,7 @@ hr {
   right: -4px;
 }
 .mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-message {
-  background-color: #e7f2fa;
+  background-color: #f5f5f5;
   font-size: 14px;
   border-radius: 3px;
   padding: 10px;
@@ -207,8 +205,8 @@ hr {
 }
 .mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-input-wrapper .mindalay-chat-typing span {
   display: inline-block;
-  width: 12px;
-  height: 12px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   margin-right: 5px;
   background: #b6b6b6;
@@ -266,6 +264,6 @@ hr {
     transform: initial;
   }
   30% {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
   }
 }

@@ -1,9 +1,11 @@
-function GetChatContainer(messages, menuName, pleaceholder = 'TR_TYPE_TEXT'){
-    let chatContent = GetChatMessage(messages)
-    let menuHeader = GetSideMenuHeader()
+function GetChatContainer(messages, pleaceholder = 'TR_TYPE_TEXT'){
+    let chatContent = GetChatMessages(messages) // get existed messages
+    let menuHeader = GetSideMenuHeader() // get side menu header
+    
     let popupContainer = new HtmlElement('div', 'mindalay--popup-container', null)
-    popupContainer.attr('data-toggle', menuName).attr('id', 'mindalay--popup-container');
+    // popupContainer.attr('data-toggle', menuName).attr('id', 'mindalay--popup-container');
     popupContainer.append(menuHeader);
+
     let popupBody = new HtmlElement('div', 'mindalay--popup-body', null)
     let messageContainer = new HtmlElement('div', 'mindalay--chat-message-container', null)
     messageContainer.attr('id', 'chat-message-container')
@@ -12,13 +14,6 @@ function GetChatContainer(messages, menuName, pleaceholder = 'TR_TYPE_TEXT'){
     popupContainer.append(popupBody)
 
     let inputWrapper = new HtmlElement('div','mindalay--chat-input-wrapper', null);
-    let typing = new HtmlElement('div', 'mindalay-chat-typing', null)
-    typing.attr('id', 'type-chat-animation')
-    for (let index = 0; index < 3; index++) {
-        const element = new HtmlElement('span', null, null);
-        typing.append(element);
-    }
-    inputWrapper.append(typing)
     let sendButton = new HtmlElement('div', 'mindalay--chat-send-message-button', null);
     sendButton.attr('id', 'send-message-button');
     let input = $('<input>')
@@ -32,14 +27,14 @@ function GetChatContainer(messages, menuName, pleaceholder = 'TR_TYPE_TEXT'){
     if(popupContainer) return popupContainer;
 }
 
-function GetSideMenuHeader(){
+function GetSideMenuHeader(sideMenuName){
     var header = new HtmlElement('div', 'mindalay--popup-header', null);
     var headerChildDiv = new HtmlElement('div', 'mindalay--popup-close-button close-right-menu', null)
     header.append(headerChildDiv.append(right_arrow_icon));
     return header;
 }
 
-function GetChatMessage(messages){
+function GetChatMessages(messages){
     let messageWrapper = '';
     for (let index = 0; index < messages.length; index++) {
         const message = messages[index];

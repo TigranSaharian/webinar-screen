@@ -67,13 +67,14 @@ var hideElement = false;
 var isWebinarStarted = false;
 
 //elements ids
-const footerIconGroupContainer = $('#mindalay--footer-icon-group');
-const footerRightButtonContainer = $('#mindalay--webinar-start');
-const moreButtonContainer = $('#mindalay--more-button');
+const footerIconGroupContainer = $('#mindalay-footer-center-btn-group');
+const footerLeftButtonContainer = $('#mindalay-footer-left-btn-group');
+const moreButtonContainer = $('#mindalay-footer-rigth-btn-group');
 const morePopup = $('#mindalay--footer-popup');
 const preloader = $('#preloader');
 const mainContainer = $('#main-content');
-const rightMenu = $('#right-menu')
+const chat_RightMenu = $('#mindalay--chat-side-menu');
+const default_RightMenu = $('#mindalay--side-menu');
 
 // element classes
 const mindalayFooterBtn = 'mindalay--footer-btn';
@@ -123,7 +124,7 @@ const popupIcons = [
     'screen-share',
     'text-board',
     'blackboard',
-    'chat-button',
+    'mindalay-chat',
     'webinar-end',
     'report',
     'settings',
@@ -152,5 +153,5 @@ const full_screen_btn_name = 'full-screen'
 const settings_btn_name = 'settings'
 const webinar_end_btn_name = 'webinar-end'
 const members_btn_name = 'members'
-const chat_btn_name = 'chat-button'
+const chat_btn_name = 'mindalay-chat'
 const send_message_btn_name = 'send-message'
