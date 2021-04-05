@@ -13,6 +13,7 @@ hr {
   opacity: 0.7;
 }
 .mindalay--more-options {
+  bottom: 65px;
   z-index: 2;
   display: none;
 }
@@ -43,6 +44,9 @@ hr {
 .mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-header span {
   color: #ffffff;
 }
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-header label {
+  cursor: pointer;
+}
 .mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body {
   position: absolute;
   bottom: 0;
@@ -50,48 +54,62 @@ hr {
   height: calc(100% - 70px);
   padding: 5px 0;
 }
-.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body {
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper {
+  max-height: calc(100vh - 125px);
+  overflow-y: auto;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper {
   display: flex;
   align-items: center;
   padding: 10px;
   border-bottom: solid 0.5px #cfcfcf;
 }
-.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindalay--member-wrapper {
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper .mindalay--right-menu-item {
   display: flex;
-  flex: 50%;
+  flex: auto;
   align-items: center;
   margin: 0;
 }
-.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindalay--member-wrapper .mindlay--member-fullname {
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper .mindalay--right-menu-item .mindlay--right-menu-item-name {
   flex: 1;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  max-width: 125px;
+  width: 150px;
   margin-left: 10px;
 }
-.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindalay--member-wrapper .mindalay--member {
-  width: 35px;
-  height: 35px;
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper .mindalay--right-menu-item .mindalay--member {
+  width: 45px;
+  height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindalay--member-wrapper .mindalay--member svg {
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper .mindalay--right-menu-item .mindalay--member svg {
   width: 18px;
   opacity: 0.6;
 }
-.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindalay--member-wrapper .mindalay--member svg * {
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper .mindalay--right-menu-item .mindalay--member svg * {
   fill: #ffffff;
 }
-.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindlay--member-options-wrapper {
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper .mindalay--right-menu-item .mindalay--file {
+  height: 60px;
+  width: 100%;
+  max-width: 90px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #e9e9e9;
+  border: 1px solid #cfcfcf;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper .mindlay--item-options-wrapper {
   display: flex;
-  flex: 50%;
+  flex: 1;
   align-items: center;
   justify-content: flex-end;
 }
-.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindlay--member-options-wrapper .mindlay--member-activity-timer {
-  padding: 7px 10px;
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper .mindlay--item-options-wrapper .mindlay--member-activity-timer {
+  padding: 10px;
   margin: 0 3px;
   background-color: #06B400;
   color: #ffffff;
@@ -100,30 +118,34 @@ hr {
   min-width: 60px;
   text-align: center;
 }
-.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindlay--member-options-wrapper button {
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper .mindlay--item-options-wrapper button,
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper .mindlay--item-options-wrapper a {
   cursor: pointer;
-  padding: 5px 10px;
+  padding: 8px 10px;
   border: 0.5px solid #9c9c9c;
   border-radius: 3px;
   background-color: #ffffff;
   margin: 0 3px;
-  min-height: 30px;
   display: flex;
   align-items: center;
 }
-.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindlay--member-options-wrapper button svg {
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper .mindlay--item-options-wrapper button svg,
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper .mindlay--item-options-wrapper a svg {
   opacity: 0.9;
   height: auto;
   width: 17px;
 }
-.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindlay--member-options-wrapper button svg * {
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper .mindlay--item-options-wrapper button svg *,
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper .mindlay--item-options-wrapper a svg * {
   fill: #222F3E;
 }
-.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindlay--member-options-wrapper button:hover {
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper .mindlay--item-options-wrapper button:hover,
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper .mindlay--item-options-wrapper a:hover {
   border-color: #B53471;
   background-color: #B53471;
 }
-.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindlay--member-options-wrapper button:hover * {
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper .mindlay--item-options-wrapper button:hover *,
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper .mindalay--right-menu-item-wrapper .mindlay--item-options-wrapper a:hover * {
   fill: #ffffff;
 }
 .mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-body-container {
@@ -292,30 +314,30 @@ hr {
 .mindalay--popup .mindalay--popup-container .mindalay--popup-body li .popup-button:hover {
   background-color: #ebeff4;
 }
-.mindalay--member-wrapper {
+.mindalay--right-menu-item {
   margin: 10px;
   height: fit-content;
 }
-.mindalay--member-wrapper .mindalay--member-default-image {
+.mindalay--right-menu-item .mindalay--member-default-image {
   justify-content: center;
   align-items: center;
   color: #ffffff;
   display: flex;
 }
-.mindalay--member-wrapper .mindalay--member,
-.mindalay--member-wrapper .mindalay--member-default-image {
+.mindalay--right-menu-item .mindalay--member,
+.mindalay--right-menu-item .mindalay--member-default-image {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   position: relative;
   background-color: #B53471;
 }
-.mindalay--member-wrapper .member-online-status::after {
-  width: 8px;
-  height: 8px;
+.mindalay--right-menu-item .member-online-status::after {
+  width: 9px;
+  height: 9px;
   bottom: -2px;
   right: -2px;
 }

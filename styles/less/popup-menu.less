@@ -1,7 +1,7 @@
 @import url("../less/constants.less");
 
 .mindalay--more-options{
-    // bottom: 65px;
+    bottom: 65px;
     z-index: 2;
     display: none;
     .mindalay--popup-header{
@@ -28,6 +28,9 @@
             >p, strong,span{
                 color: @mindalay--white-color;
             }
+            label{
+                cursor: pointer;
+            }
         }
         .mindalay--right-menu-body{
             position: absolute;
@@ -35,28 +38,30 @@
             width: 100%;
             height: calc(100% - 70px);
             padding: 5px 0;
-            .mindalay--right-menu-item-wrapper{
-                .mindalay--member-body{
+            .mindalay--right-menu-items-wrapper{
+                max-height: calc(100vh - 125px);
+                overflow-y: auto;
+                .mindalay--right-menu-item-wrapper{
                     display: flex;
                     align-items: center;
                     padding: 10px;
                     border-bottom: solid .5px lighten(@mindalay--gray-color, 20%);
-                    .mindalay--member-wrapper{
+                    .mindalay--right-menu-item{
                         display: flex;
-                        flex: 50%;
+                        flex: auto;
                         align-items: center;
                         margin: 0;
-                        .mindlay--member-fullname{
+                        .mindlay--right-menu-item-name{
                             flex: 1;
                             text-overflow: ellipsis;
                             overflow: hidden;
                             white-space: nowrap;
-                            max-width: 125px;
+                            width: 150px;
                             margin-left: 10px;
                         }
                         .mindalay--member{
-                            width: 35px;
-                            height: 35px;
+                            width: 45px;
+                            height: 45px;
                             display: flex;
                             justify-content: center;
                             align-items: center;
@@ -68,14 +73,24 @@
                                 }
                             }
                         }
+                        .mindalay--file{
+                            height: 60px;
+                            width: 100%;
+                            max-width: 90px;
+                            background-size: contain;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            background-color: lighten(@mindalay--gray-color, 30%);
+                            border: 1px solid lighten(@mindalay--gray-color, 20%);
+                        }
                     }
-                    .mindlay--member-options-wrapper{
+                    .mindlay--item-options-wrapper{
                         display: flex;
-                        flex: 50%;
+                        flex: 1;
                         align-items: center;
                         justify-content: flex-end;
                         .mindlay--member-activity-timer{
-                            padding: 7px 10px;
+                            padding: 10px;
                             margin: 0 3px;
                             background-color: @mindalay--green-color;
                             color: @mindalay--white-color;
@@ -84,14 +99,14 @@
                             min-width: 60px;
                             text-align: center;
                         }
-                        button{
+                        button,a{
                             cursor: pointer;
-                            padding: 5px 10px;
+                            padding: 8px 10px;
                             border: .5px solid @mindalay--gray-color;
                             border-radius: @border-radius-3;
                             background-color: @mindalay--white-color;
                             margin: 0 3px;
-                            min-height: 30px;
+                            // min-height: 30px;
                             display: flex;
                             align-items: center;
                             svg{
@@ -295,7 +310,7 @@
 
 }
 
-.mindalay--member-wrapper{
+.mindalay--right-menu-item{
     margin: 10px;
     height: fit-content;
     .mindalay--member-default-image{
@@ -309,16 +324,16 @@
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
         border-radius: 50%;
         position: relative;
         background-color: @mindalay--brand-color;
     }
     .member-online-status{
         &::after{
-            width: 8px;
-            height: 8px;
+            width: 9px;
+            height: 9px;
             bottom: -2px;
             right: -2px;
         }

@@ -2,15 +2,15 @@ function getChatMenu(messages){
     let chatContent = getChatMessages(messages) // get existed messages
     let menuHeader = getRightMenuHeader(chat_name) // get side menu header
     
-    let popupContainer = getRightMenuContainer();
-    let popupBody = getRightMenuBody();
-    popupContainer.append(menuHeader);
+    let chatMenuContainer = getRightMenuContainer();
+    let chatMenuBody = getRightMenuBody();
+    chatMenuContainer.append(menuHeader);
 
     let messageContainer = new HtmlElement('div', 'mindalay--chat-body-container')
     messageContainer.attr('id', 'chat-message-container')
     messageContainer.append(chatContent);
-    popupBody.append(messageContainer);
-    popupContainer.append(popupBody)
+    chatMenuBody.append(messageContainer);
+    chatMenuContainer.append(chatMenuBody)
 
     let inputWrapper = new HtmlElement('div','mindalay--chat-input-wrapper');
     let sendButton = new HtmlElement('div', 'mindalay--chat-send-message-button');
@@ -23,8 +23,8 @@ function getChatMenu(messages){
         .attr('placeholder', '')
     inputWrapper.append(sendButton.append(send_message_icon))
     inputWrapper.append(input)
-    popupBody.append(inputWrapper)
-    if(popupContainer) return popupContainer;
+    chatMenuBody.append(inputWrapper)
+    if(chatMenuContainer) return chatMenuContainer;
 }
 
 function getChatMessages(messages){
@@ -45,7 +45,7 @@ function GetMessageWrapper(message){
     }else{
         userAvatar = `<div class="mindalay--member member-online-status ${isOnline}" style="background-image: url(${message.user.avatarUrl});"></div>`;
     }
-    let userImage = `<div class="mindalay--member-wrapper">${userAvatar}</div>`;
+    let userImage = `<div class="mindalay--right-menu-item">${userAvatar}</div>`;
     let messageBody = 
         `<div class="mindalay--chat-message">
             <strong class="mindalay--chat-username">${message.user.firstname} ${message.user.lastname}</strong>

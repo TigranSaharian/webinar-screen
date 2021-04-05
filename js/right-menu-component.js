@@ -1,29 +1,44 @@
 function getMembersMenu(members){
-    let bodyWrapper = new HtmlElement('div', 'mindalay--right-menu-item-wrapper')
-    
+    let rightMenuBodyWrapper = new HtmlElement('div', 'mindalay--right-menu-items-wrapper')
     for (let index = 0; index < members.length; index++) {
         const member = members[index];
-        let memberBody = new HtmlElement('div', 'mindalay--member-body')
-        let memberWrapper = new HtmlElement('div', 'mindalay--member-wrapper');
-        let userName = new HtmlElement('p', 'mindlay--member-fullname', member.fullname)
+        let rightMenuItemWrapper = new HtmlElement('div', 'mindalay--right-menu-item-wrapper')
+        let rightMenuItem = new HtmlElement('div', 'mindalay--right-menu-item');
+        let rightMenuItemName = new HtmlElement('p', 'mindlay--right-menu-item-name', member.fullname)
         let isOnline =  getUserOnlineStatusStyle(member)
-        let memberAvatar = new HtmlElement('div', `mindalay--member member-online-status ${isOnline}`);
-        memberAvatar.addClass(isOnline);
-        member.avatarUrl !== null ? memberAvatar.attr('style', `background-image: url(${member.avatarUrl})`) : memberAvatar.append(default_user_icon);
+        let rightMenuItemImage = new HtmlElement('div', `mindalay--member member-online-status ${isOnline}`);
+        rightMenuItemWrapper.attr('alt', isOnline);
+        rightMenuItemImage.addClass(isOnline);
+        member.avatarUrl !== null ? rightMenuItemImage.attr('style', `background-image: url(${member.avatarUrl})`) : rightMenuItemImage.append(default_user_icon);
 
+        rightMenuItem.append(rightMenuItemImage)
+        rightMenuItem.append(rightMenuItemName)
         
-        memberWrapper.append(memberAvatar)
-        memberWrapper.append(userName)
-        
-        memberBody.append(memberWrapper)
-        memberBody.append(getMemberRules(member))
-        bodyWrapper.append(memberBody);
+        rightMenuItemWrapper.append(rightMenuItem)
+        rightMenuItemWrapper.append(getMemberRules(member))
+        rightMenuBodyWrapper.append(rightMenuItemWrapper);
     }
-    return bodyWrapper;
+    return rightMenuBodyWrapper;
 }
 
 function getFilesMenu(files){
+    let rightMenuBodyWrapper = new HtmlElement('div', 'mindalay--right-menu-items-wrapper')
+    for (let index = 0; index < files.length; index++) {
+        const file = files[index];
+        let rightMenuItemWrapper = new HtmlElement('div', 'mindalay--right-menu-item-wrapper')
+        let rightMenuItem = new HtmlElement('div', 'mindalay--right-menu-item');
+        let rightMenuItemName = new HtmlElement('p', 'mindlay--right-menu-item-name', file.fileName)
+        let rightMenuItemImage = new HtmlElement('div', 'mindalay--file');
+        file.filePath !== null ? rightMenuItemImage.attr('style', `background-image: url(${file.filePath})`) : rightMenuItemImage.append(default_user_icon);
 
+        rightMenuItem.append(rightMenuItemImage)
+        rightMenuItem.append(rightMenuItemName)
+        
+        rightMenuItemWrapper.append(rightMenuItem)
+        rightMenuItemWrapper.append(getFileRules(file))
+        rightMenuBodyWrapper.append(rightMenuItemWrapper);
+    }
+    return rightMenuBodyWrapper;
 }
 
 ///////////////////////////////////////////////////
@@ -31,8 +46,10 @@ function getFilesMenu(files){
 // get right menu
 function getRightMenu(nameMenu){
     let rightMenuContainer = getRightMenuContainer();
+    let rightMenuHeader = getRightMenuHeader(nameMenu);
     let rightMenuBody = getRightMenuBody();
     let rightMenuContent;
+
     if(nameMenu){
         switch (nameMenu) {
             case members_btn_name:
@@ -45,8 +62,8 @@ function getRightMenu(nameMenu){
                 break;
         }
     }
+
     rightMenuBody.append(rightMenuContent);
-    let rightMenuHeader = getRightMenuHeader(nameMenu);
     rightMenuContainer.append(rightMenuHeader);
     rightMenuContainer.append(rightMenuBody);
     default_RightMenu.append(rightMenuContainer);
@@ -54,42 +71,57 @@ function getRightMenu(nameMenu){
     return true;
 }
 
-// get memebr rules in right menu
+// get files rules
+function getFileRules(file){
+    let itemRulesWrapper = new HtmlElement('div', 'mindlay--item-options-wrapper');
+    let zoomIn = new Button(file.id, '', zoom_in_icon, true, 'data-title', TR_ZOOM, membersMenuPrefix)
+    let downloadLink = new HtmlElement('a')
+    downloadLink.attr('href', file.filePath)
+                .attr('data-title', TR_DOWNLOAD)
+                .attr('target', '_blank')
+                .attr('hidden', true);
+    downloadLink.append(download_icon)
+    itemRulesWrapper.append(zoomIn)
+    itemRulesWrapper.append(downloadLink)
+    getTranslation(zoomIn, 'data-title', TR_ZOOM)
+    getTranslation(downloadLink, 'data-title', TR_DOWNLOAD)
+    return itemRulesWrapper;
+}
+
+// get memebr rules
 function getMemberRules(member){
-    let memberRulesWrapper = new HtmlElement('div', 'mindlay--member-options-wrapper');
+    let itemRulesWrapper = new HtmlElement('div', 'mindlay--item-options-wrapper');
     if(member.isVideo){
         let removeVideoButton = new Button(close_btn_name, '', clsoe_icon, true, 'data-title', '', membersMenuPrefix)
         removeVideoButton.attr('title', '')
-        memberRulesWrapper.append(removeVideoButton)
+        itemRulesWrapper.append(removeVideoButton)
         getTranslation(removeVideoButton, 'data-title', TR_REMOVE_VIDEO)
     }
-    let raseHandButton = new Button(raise_a_hand_name, '', raise_a_hand_icon, true, 'data-title', TR_RAISE_A_HAND, membersMenuPrefix)
+
+    let raseHandButton = new Button(raise_a_hand_name, '', raise_a_hand_icon, true, 'data-title', TR_CHECK_STUDENT_ACTIVITY, membersMenuPrefix)
     raseHandButton.attr('title', '')
-    memberRulesWrapper.append(raseHandButton);
-    getTranslation(raseHandButton, 'data-title', TR_RAISE_A_HAND)
+    itemRulesWrapper.append(raseHandButton);
+    getTranslation(raseHandButton, 'data-title', TR_CHECK_STUDENT_ACTIVITY)
     
     if(member.activityTime){
         let activityTimer = new HtmlElement('span', 'mindlay--member-activity-timer', member.activityTime)
-        memberRulesWrapper.append(activityTimer)
+        itemRulesWrapper.append(activityTimer)
         getTranslation(activityTimer, 'data-title', TR_ACTIVITY_TIMER)
     }
-    return memberRulesWrapper;
-}
-
-function getRightMenuContainer(){
-    return new HtmlElement('div', 'mindalay--right-menu-container')
+    return itemRulesWrapper;
 }
 
 //right menu header
 function getRightMenuHeader(menuName = ''){
-    let headerContent = '';
     var header = new HtmlElement('div', 'mindalay--right-menu-header mindalay--brand-color-background');
-    var headerChildDiv = new HtmlElement('div', 'mindalay--popup-close-button close-right-menu')
+    var headerCloseButton = new HtmlElement('div', 'mindalay--popup-close-button close-right-menu')
+    let headerContent;
+
     if(menuName){
         switch (menuName) {
             case members_btn_name:
                 headerContent = getRightMenuHeaderContent(TR_MEMBERS, users.length)
-                let checkbox = `<div class="checkbox">
+                let checkbox = `<div class="checkbox" id="is-online-list">
                                     <label class="translation" data-id="${TR_ONLINE}" for="online-members"></label>
                                     <input type="checkbox" id="online-members">
                                 </div>`
@@ -106,7 +138,7 @@ function getRightMenuHeader(menuName = ''){
                 break;
         }
     }
-    header.append(headerChildDiv.append(right_arrow_icon));
+    header.append(headerCloseButton.append(right_arrow_icon));
     headerContent != '' ? header.append(headerContent) : '';
     return header;
 }
@@ -115,16 +147,20 @@ function getRightMenuBody(){
     return new HtmlElement('div', 'mindalay--right-menu-body');
 }
 
+function getRightMenuContainer(){
+    return new HtmlElement('div', 'mindalay--right-menu-container')
+}
+
 function toggleMenuName(menuName = ''){
     menuName !== '' ? default_RightMenu.attr('data-toggle', menuName) : default_RightMenu.removeAttr('data-toggle') 
 }
 
 function getRightMenuHeaderContent(translationKey, content){
-    let titleWrapper = new HtmlElement('div', 'mindalay--right-menu-title-wrapper');
+    let headerTitleWrapper = new HtmlElement('div', 'mindalay--right-menu-title-wrapper');
     let headerContent = new HtmlElement('p');
     headerContent.append(`<strong class='translation' data-id='${translationKey}'></strong> (<span>${content}</span>)`)
-    titleWrapper.append(headerContent)
+    headerTitleWrapper.append(headerContent)
     let HeaderTitle = headerContent.find('strong')
     getTranslation(HeaderTitle, 'data-id', translationKey)
-    return titleWrapper;
+    return headerTitleWrapper;
 }

@@ -42,17 +42,17 @@ var files = [
     {
         id : 1,
         fileName : 'file-1',
-        filePath : '‪C:\\Users\\Office_1\\Downloads\\Ava_inst_OkkK.png'
+        filePath : 'assets/image/image.png'
     },
     {
         id : 2,
         fileName : 'file-2',
-        filePath : '‪C:\\Users\\Office_1\\Downloads\\Ava_inst_OkkK.png'
+        filePath : 'assets/image/image-2.png'
     },
     {
         id : 3,
         fileName : 'file-3',
-        filePath : '‪C:\\Users\\Office_1\\Downloads\\Ava_inst_OkkK.png'
+        filePath : 'assets/image/image-3.jpg'
     }
 ]
 
@@ -118,7 +118,9 @@ const TR_CLOSE = 'TR_CLOSE'
 const TR_REMOVE_VIDEO = 'TR_REMOVE_VIDEO'
 const TR_ONLINE_STUDENTS = 'TR_ONLINE_STUDENTS'
 const TR_ONLINE = 'TR_ONLINE'
-
+const TR_DOWNLOAD = 'TR_DOWNLOAD'
+const TR_ZOOM = 'TR_ZOOM'
+const TR_CHECK_STUDENT_ACTIVITY = 'TR_CHECK_STUDENT_ACTIVITY'
 
 // variables
 var isLecturer = true;
@@ -128,7 +130,6 @@ var isVideoMuted = false;
 var hideElement = false;
 var isWebinarStarted = false;
 var languages = [];
-var toggleChat = false;
 
 //elements ids
 const footerIconGroupContainer = $('#mindalay-footer-center-btn-group');
@@ -137,7 +138,7 @@ const moreButtonContainer = $('#mindalay-footer-rigth-btn-group');
 const morePopup = $('#mindalay--footer-popup');
 const preloader = $('#preloader');
 const mainContainer = $('#main-content');
-const chat_RightMenu = $('#mindalay--chat-side-menu');
+const chat_RightMenu = $('#mindalay--right-chat-menu');
 const default_RightMenu = $('#mindalay--right-menu');
 const right_menu_conatiner = $('#right-menu-container');
 
@@ -155,6 +156,7 @@ const hasBoard = 'has-board'
 // constant texts
 const popupPrefix = 'popup--';
 const membersMenuPrefix = 'member-menu--'
+const fileMenuPrefix = 'file-menu--'
 const morePopupContainer = '#popup-body';
 
 //footer icons
@@ -199,6 +201,14 @@ const popupIcons = [
     'report',
     'settings',
     'logout'
+]
+
+const menuItemRules = [
+    'activity-timer',
+    'raise-a-hand',
+    'close',
+    'zoom-in',
+    'download'
 ]
 
 const microphone_unmute_name = 'microphone-unmute'

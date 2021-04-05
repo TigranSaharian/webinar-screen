@@ -187,15 +187,13 @@ function openRightMenu(targetName){
 
 function hideRightMenu(targetName){
     $(`#${targetName}`).removeClass('transform-menu');
-    if(targetName !== 'mindalay--chat-side-menu'){
+    if(targetName !== 'mindalay--right-chat-menu'){
         setTimeout(() => {
             $(`#${targetName}`).children().remove()
         }, 300)
     }
     mainContainer.removeClass('move-container');
 }
-
-
 
 function removeRightMenu(){
     right_menu_conatiner.children().each(function() {

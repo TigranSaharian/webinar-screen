@@ -45,7 +45,6 @@ $(document).ready(function(){
 
     // toggle chat
     $(document).on('click', '#mindalay-chat', function(){
-        toggleChat = !toggleChat;
         getChat();
     })
     // get chat mobile screen
@@ -86,7 +85,6 @@ $(document).ready(function(){
 
     $(document).on('click', '.has-right-menu', function(){
         let targetName = $(this).attr('id').split('--')[1]
-        let rightMenu;
         if($('#mindalay--right-menu').attr('data-toggle')){
             removeRightMenu()
             setTimeout(() => {
@@ -98,6 +96,12 @@ $(document).ready(function(){
         }
         togglePopup();
     });
+
+    $(document).on('change', '#is-online-list', function() {
+        $('.mindalay--right-menu-item-wrapper').each(function(){
+            if($(this).attr('alt') === 'offline') $(this).toggleClass('d-none')
+        })
+    }).change()
 
     /////////////////////////////////////////////
     $(document).on('keypress','#mindalay--chat-message', function (e) {
