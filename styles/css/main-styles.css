@@ -151,6 +151,9 @@ li {
 .mindalay--green-color-background {
   background-color: #06B400 !important;
 }
+.mindalay--orange-color-background {
+  background-color: #ff6700 !important;
+}
 .brand-color {
   color: #B53471 !important;
 }
@@ -165,6 +168,9 @@ li {
 }
 .gray-color {
   color: #9c9c9c !important;
+}
+.orange-color {
+  color: #ff6700 !important;
 }
 .red-color {
   color: #DA0006;
@@ -218,34 +224,57 @@ li {
   .mindalay--more-popup-user-name {
     font-size: 17px;
   }
-  #popup--chat-button {
+  #popup--mindalay-chat {
     display: none !important;
   }
   .mindalay--more-options {
     bottom: calc(100% -65px);
     right: 10px !important;
   }
+  .mindalay--popup-container,
+  .mindalay--right-menu-container {
+    width: 400px;
+  }
   .mindalay--popup .mindalay--popup-container {
     border-radius: 3px;
-    width: 400px;
+  }
+  .flags-dropdown {
+    margin: 0 15px;
+    line-height: 0;
+  }
+  .flags-dropdown .flags-button {
+    background-color: transparent;
+    border: none;
+    position: relative;
+    width: 30px;
+  }
+  .flags-dropdown .flags-dropdown-menu {
+    position: absolute;
+    top: calc(-100% - 70px);
+  }
+  .flags-dropdown .flags-dropdown-menu .flags-dropdown-item {
+    display: block;
+    margin: 10px 0;
+  }
+  .flags-dropdown .flags-dropdown-menu .flags-dropdown-item img {
+    width: 30px;
   }
 }
 @media (max-width: 767.98px) {
   .mindalay--more-popup-user-name {
     font-size: 15px;
   }
-  .mindalay--right-menu .mindalay--popup-container {
+  .mindalay--popup-container,
+  .mindalay--right-menu-container {
     width: 100vw;
-  }
-  .mindalay--more-options .mindalay--popup-container {
-    min-width: 100vw;
     border-radius: 0%;
   }
   .mindalay--more-options .mindalay--popup-container .mindalay--popup-body {
     overflow-y: auto;
     height: calc(100vh - 155px);
   }
-  .mindalay--popup {
+  .mindalay--popup,
+  .mindalay--right-menu {
     right: 0;
     top: 0;
   }

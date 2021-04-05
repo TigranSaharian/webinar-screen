@@ -1,23 +1,23 @@
-function GetRTCVideoButton(){
+function getRTCVideoButton(){
     if(isVideoMuted){
-        CreateFooterIconButton(footerIconGroupContainer, video_unmute_icon,'TR_VIDEO', true, video_unmute_btn_name)
+        createFooterIconButton(footerIconGroupContainer, video_unmute_icon, TR_ON_VIDEO, true, video_unmute_name, false, true)
     }else{
-        CreateFooterIconButton(footerIconGroupContainer, video_muted_icon,'TR_VIDEO', true, video_muted_btn_name)
+        createFooterIconButton(footerIconGroupContainer, video_muted_icon, TR_OFF_VIDEO, true, video_muted_name, false, true)
     }
 }
 
-function GetRTCMicrophoneButton(){
+function getRTCMicrophoneButton(){
     if(isSpeakerMuted){
-        CreateFooterIconButton(footerIconGroupContainer, speaker_unmute_icon,'TR_SPEAKER', true, speaker_unmute_btn_name)
+        createFooterIconButton(footerIconGroupContainer, speaker_unmute_icon, TR_UNMUTE, true, speaker_unmute_name, false, true)
     }else{
-        CreateFooterIconButton(footerIconGroupContainer, speaker_muted_icon,'TR_SPEAKER', true, speaker_muted_btn_name)
+        createFooterIconButton(footerIconGroupContainer, speaker_muted_icon, TR_MUTED, true, speaker_muted_name, false, true)
     }
 }
 
-function GetScreenSpeakerStatus(){
+function getScreenSpeakerStatus(){
     if(isMicrophoneMuted){
-        CreateFooterIconButton(footerIconGroupContainer, microphone_unmute_icon,'TR_MICROPHONE', true, microphone_unmute_btn_name)
+        createFooterIconButton(footerIconGroupContainer, microphone_unmute_icon, TR_UNMUTE, true, microphone_unmute_name, false, true)
     }else{
-        CreateFooterIconButton(footerIconGroupContainer, microphone_muted_icon, 'TR_MICROPHONE', true, microphone_muted_btn_name)
+        createFooterIconButton(footerIconGroupContainer, microphone_muted_icon, TR_MUTED, true, microphone_muted_name, false, true)
     }
 }

@@ -1,3 +1,6 @@
+//api
+const API_URL_DOMAIN_KEY = 'https://api.webinarsystems.ru';
+
 var user = {
     id : 1,
     firstname: 'Jon',
@@ -5,7 +8,7 @@ var user = {
     usertype: 'lecturer',
     fullname: 'Jon Smith',
     isOnline: true,
-    avatarUrl: 'assets/image/profile-image.jpg'
+    avatarUrl: '/assets/image/profile-image.jpg'
 }
 
 var users = [
@@ -16,7 +19,10 @@ var users = [
         usertype: 'lecturer',
         fullname: 'Jon Smith',
         isOnline: true,
-        avatarUrl: 'assets/image/profile-image.jpg'
+        avatarUrl: '/assets/image/profile-image.jpg',
+        isMicrohopneMuted : true,
+        isVideo : true,
+        activityTime : '12:04:00'
     },
     {
         id : 2,
@@ -24,10 +30,32 @@ var users = [
         lastname: 'Yoshimi',
         usertype: 'Student',
         fullname: 'Daniel Yoshimi',
-        isOnline: true,
-        avatarUrl: null
+        isOnline: false,
+        avatarUrl: null,
+        isMicrohopneMuted : false,
+        isVideo : false,
+        activityTime : '02:04:00'
     }
 ]
+
+var files = [
+    {
+        id : 1,
+        fileName : 'file-1',
+        filePath : '‪C:\\Users\\Office_1\\Downloads\\Ava_inst_OkkK.png'
+    },
+    {
+        id : 2,
+        fileName : 'file-2',
+        filePath : '‪C:\\Users\\Office_1\\Downloads\\Ava_inst_OkkK.png'
+    },
+    {
+        id : 3,
+        fileName : 'file-3',
+        filePath : '‪C:\\Users\\Office_1\\Downloads\\Ava_inst_OkkK.png'
+    }
+]
+
 
 var messages = [
     {
@@ -58,21 +86,39 @@ var messages = [
     }
 ]
 
+// translation keys
 const TRANSLATION_KEY_ID = 'data-id'
 const TRANSLATION_KEY_ALT = 'data-alt'
 const TRANSLATION_KEY_PLACEHOLDER = 'data-placeholder'
 
-
-//translations
+//translation values
 const TR_START_WEBINAR = 'TR_START_WEBINAR'
-const TR_END_WEBINAR = 'TR_END_WEBINAR'
+const TR_WEBINAR_END = 'TR_WEBINAR_END'
 const TR_LEAVE_WEBINAR = 'TR_LEAVE_WEBINAR'
 const TR_TYPEMESSAGE = 'TR_TYPEMESSAGE'
+const TR_PRELOADER_INITIAL_TEXT = 'TR_PRELOADER_INITIAL_TEXT'
 
+const TR_OFF_VIDEO = 'TR_OFF_VIDEO'
+const TR_ON_VIDEO = 'TR_ON_VIDEO'
+const TR_MUTED = 'TR_MUTED'
+const TR_RAISE_A_HAND = 'TR_RAISE_A_HAND'
+const TR_ACTIVITY_TIMER = "TR_ACTIVITY_TIMER"  
 
+const TR_UNMUTE = 'TR_UNMUTE'
+const TR_FILE = 'TR_FILE'
+const TR_MEMBERS = 'TR_MEMBERS'
+const TR_SCREEN_SHARE = 'TR_SCREEN_SHARE'
+const TR_BLACKBOARD = 'TR_BLACKBOARD'
+const TR_TEXT_BOARD = 'TR_TEXT_BOARD'
+const TR_REPORT = 'TR_REPORT'
+const TR_SETTINGS = 'TR_SETTINGS'
+const TR_CHAT = 'TR_CHAT'
+const TR_LOG_OUT = 'TR_LOG_OUT'
+const TR_CLOSE = 'TR_CLOSE'
+const TR_REMOVE_VIDEO = 'TR_REMOVE_VIDEO'
+const TR_ONLINE_STUDENTS = 'TR_ONLINE_STUDENTS'
+const TR_ONLINE = 'TR_ONLINE'
 
-//constants
-const API_URL_DOMAIN_KEY = 'https://api.webinarsystems.ru';
 
 // variables
 var isLecturer = true;
@@ -82,6 +128,7 @@ var isVideoMuted = false;
 var hideElement = false;
 var isWebinarStarted = false;
 var languages = [];
+var toggleChat = false;
 
 //elements ids
 const footerIconGroupContainer = $('#mindalay-footer-center-btn-group');
@@ -91,7 +138,8 @@ const morePopup = $('#mindalay--footer-popup');
 const preloader = $('#preloader');
 const mainContainer = $('#main-content');
 const chat_RightMenu = $('#mindalay--chat-side-menu');
-const default_RightMenu = $('#mindalay--side-menu');
+const default_RightMenu = $('#mindalay--right-menu');
+const right_menu_conatiner = $('#right-menu-container');
 
 // element classes
 const mindalayFooterBtn = 'mindalay--footer-btn';
@@ -101,11 +149,12 @@ const mindalayBtnPrimary = 'mindalay--btn-primary mindalay--btn';
 const mindalayBtnDark = 'mindalay--btn-dark mindalay--btn';
 const translation = 'translation';
 const preloader_btn = 'preloader-button';
+const hasRightMenu = 'has-right-menu'
+const hasBoard = 'has-board'
 
 // constant texts
 const popupPrefix = 'popup--';
-
-// element id
+const membersMenuPrefix = 'member-menu--'
 const morePopupContainer = '#popup-body';
 
 //footer icons
@@ -124,11 +173,12 @@ const file_icon = '<svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-ba
 const members_icon = '<svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512"><g><circle cx="256" cy="119.631" r="87"/><circle cx="432" cy="151.63" r="55"/><circle cx="80" cy="151.63" r="55"/><path d="m134.19 256.021c-21.65-17.738-41.257-15.39-66.29-15.39-37.44 0-67.9 30.28-67.9 67.49v109.21c0 16.16 13.19 29.3 29.41 29.3 70.026 0 61.59 1.267 61.59-3.02 0-77.386-9.166-134.137 43.19-187.59z"/><path d="m279.81 241.03c-43.724-3.647-81.729.042-114.51 27.1-54.857 43.94-44.3 103.103-44.3 175.48 0 19.149 15.58 35.02 35.02 35.02 211.082 0 219.483 6.809 232-20.91 4.105-9.374 2.98-6.395 2.98-96.07 0-71.226-61.673-120.62-111.19-120.62z"/><path d="m444.1 240.63c-25.17 0-44.669-2.324-66.29 15.39 51.965 53.056 43.19 105.935 43.19 187.59 0 4.314-7.003 3.02 60.54 3.02 16.8 0 30.46-13.61 30.46-30.34v-108.17c0-37.21-30.46-67.49-67.9-67.49z"/></g></svg>'
 const blackboard_icon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="984px" height="984px" viewBox="0 0 984 984" style="enable-background:new 0 0 984 984;" xml:space="preserve"><g>	<path d="M532.5,40c0-22.1-17.899-40-40-40c-22.1,0-40,17.9-40,40v32.7h80V40z"/>	<path d="M971.1,189.6c0-33.1-26.9-60-60-60H72.9c-33.1,0-60,26.9-60,60v442.5c0,33.101,26.9,60,60,60h838.2c33.1,0,60-26.899,60-60   V189.6z"/>	<path d="M887,792c0-21-16.1-38.2-36.7-39.9c-1.1-0.1-2.199-0.1-3.3-0.1H721h-90.8h-97.7h-80h-98.7H262.9H137   c-1.1,0-2.2,0.1-3.3,0.1C113.2,753.8,97,771,97,792c0,22.1,17.9,40,40,40h82.9l-50.1,93c-10.5,19.5-3.2,43.7,16.3,54.2   c6,3.199,12.5,4.8,18.9,4.8c14.2,0,28-7.601,35.3-21l70.5-131H452.6v112c0,22.1,17.899,40,40,40c22.1,0,40-17.9,40-40V832h140.8   l70.5,131c7.2,13.399,21,21,35.3,21c6.4,0,12.9-1.5,18.9-4.8c19.5-10.5,26.699-34.7,16.3-54.2l-50.101-93h82.9   C869.1,832,887,814,887,792z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>'
 const text_board_icon = '<svg xmlns="http://www.w3.org/2000/svg" id="Capa_1" data-name="Capa 1" viewBox="0 0 512 448"><path d="M208,64h32a16,16,0,0,1,16,16h0a16,16,0,0,0,16,16h32a16,16,0,0,0,16-16V16A16,16,0,0,0,304,0H16A16,16,0,0,0,0,16V80A16,16,0,0,0,16,96H48A16,16,0,0,0,64,80h0A16,16,0,0,1,80,64h32a16,16,0,0,1,16,16V368a16,16,0,0,1-16,16H80a16,16,0,0,0-16,16v32a16,16,0,0,0,16,16H240a16,16,0,0,0,16-16V400a16,16,0,0,0-16-16H208a16,16,0,0,1-16-16V80A16,16,0,0,1,208,64Z"/><path d="M496,160H272a16,16,0,0,0-16,16v64a16,16,0,0,0,16,16h32a16,16,0,0,0,16-16h0a16,16,0,0,1,32,0h0V368A16,16,0,0,1,345,381.27a16.2,16.2,0,0,1-4.19,2,15.1,15.1,0,0,1-1.54.4A16.28,16.28,0,0,1,336,384h0a16,16,0,0,0-16,16v32a16,16,0,0,0,16,16h96a16.28,16.28,0,0,0,3.22-.32A16,16,0,0,0,448,432V400A16,16,0,0,0,441,386.73a15.84,15.84,0,0,0-5.73-2.4A15.56,15.56,0,0,0,432,384c-.55,0-1.1,0-1.64-.08a16,16,0,0,1-8.54-3.57,17.11,17.11,0,0,1-2.17-2.17,16.28,16.28,0,0,1-1.72-2.55A16,16,0,0,1,416,368V240h0a16,16,0,0,1,31.92-1.64c.05.54.08,1.09.08,1.64h0c0,.55,0,1.1.08,1.64A16,16,0,0,0,464,256h32a16,16,0,0,0,16-16V176A16,16,0,0,0,496,160Z"/></svg>';
-const screen_share_icon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><g>	<g>		<g>			<path d="M320,170.667c23.531,0,42.667-19.135,42.667-42.667S343.531,85.333,320,85.333S277.333,104.469,277.333,128     c0,3.061,0.354,6.036,0.97,8.917l-54.302,27.16c-7.827-8.958-19.195-14.744-32.001-14.744c-23.531,0-42.667,19.135-42.667,42.667     s19.135,42.667,42.667,42.667c12.806,0,24.174-5.785,32.001-14.744l54.302,27.16c-0.616,2.88-0.97,5.855-0.97,8.917     c0,23.531,19.135,42.667,42.667,42.667s42.667-19.135,42.667-42.667S343.531,213.333,320,213.333     c-12.806,0-24.174,5.785-32.001,14.744l-54.302-27.16c0.616-2.88,0.97-5.855,0.97-8.917s-0.354-6.036-0.97-8.917l54.302-27.16     C295.826,164.882,307.194,170.667,320,170.667z"/>			<path d="M469.333,21.333H42.667C19.146,21.333,0,40.469,0,64v298.667c0,23.531,19.146,42.667,42.667,42.667h149.381     c-0.448,17.018-3.698,44.24-15.902,57.094c-4.479,4.708-9.604,6.906-16.146,6.906c-5.896,0-10.667,4.771-10.667,10.667     c0,5.896,4.771,10.667,10.667,10.667h192c5.896,0,10.667-4.771,10.667-10.667c0-5.896-4.771-10.667-10.667-10.667     c-6.542,0-11.667-2.188-16.125-6.896c-12.174-12.79-15.445-40.051-15.91-57.104h149.369c23.521,0,42.667-19.135,42.667-42.667V64     C512,40.469,492.854,21.333,469.333,21.333z M256,384.063c-11.792,0-21.396-9.604-21.396-21.396s9.604-21.396,21.396-21.396     s21.396,9.604,21.396,21.396S267.792,384.063,256,384.063z M42.667,320V64h426.667l0.018,256H42.667z"/>		</g>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>'
+const screen_share_icon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="475.082px" height="475.081px" viewBox="0 0 475.082 475.081" style="enable-background:new 0 0 475.082 475.081;" xml:space="preserve"><g>	<g>		<path d="M469.658,133.333L360.029,23.697c-3.621-3.617-7.909-5.424-12.854-5.424c-2.275,0-4.661,0.476-7.132,1.425    c-7.426,3.237-11.139,8.852-11.139,16.846v54.821h-45.683c-20.174,0-38.879,1.047-56.101,3.14    c-17.224,2.092-32.404,4.993-45.537,8.708c-13.134,3.708-24.983,8.326-35.547,13.846c-10.562,5.518-19.555,11.372-26.98,17.559    c-7.426,6.186-13.943,13.23-19.558,21.129c-5.618,7.898-10.088,15.653-13.422,23.267c-3.328,7.616-5.992,15.99-7.992,25.125    c-2.002,9.137-3.333,17.701-3.999,25.693c-0.666,7.994-0.999,16.657-0.999,25.979c0,10.663,1.668,22.271,4.998,34.838    c3.331,12.559,6.995,23.407,10.992,32.545c3.996,9.13,8.709,18.603,14.134,28.403c5.424,9.802,9.182,16.317,11.276,19.555    c2.093,3.23,4.095,6.187,5.997,8.85c1.903,2.474,4.377,3.71,7.421,3.71c0.765,0,1.902-0.186,3.427-0.568    c4.377-2.095,6.279-5.325,5.708-9.705c-8.564-63.954-1.52-108.973,21.128-135.047c21.892-24.934,63.575-37.403,125.051-37.403    h45.686v54.816c0,8.001,3.71,13.613,11.136,16.851c2.471,0.951,4.853,1.424,7.132,1.424c5.14,0,9.425-1.807,12.854-5.421    l109.633-109.637c3.613-3.619,5.424-7.898,5.424-12.847C475.082,141.23,473.271,136.944,469.658,133.333z"/>		<path d="M395.996,292.356c-3.625-1.529-6.951-0.763-9.993,2.283c-4.948,4.568-10.092,8.093-15.42,10.564    c-3.433,1.902-5.141,4.66-5.141,8.277v61.104c0,12.562-4.466,23.308-13.415,32.26c-8.945,8.946-19.704,13.419-32.264,13.419    H82.222c-12.564,0-23.318-4.473-32.264-13.419c-8.947-8.952-13.418-19.697-13.418-32.26V137.039    c0-12.563,4.471-23.313,13.418-32.259c8.945-8.947,19.699-13.418,32.264-13.418h31.977c1.141,0,2.666-0.383,4.568-1.143    c10.66-6.473,23.313-12.185,37.972-17.133c4.949-0.95,7.423-3.994,7.423-9.136c0-2.474-0.903-4.611-2.712-6.423    c-1.809-1.804-3.946-2.708-6.423-2.708H82.226c-22.65,0-42.018,8.042-58.102,24.125C8.042,95.026,0,114.394,0,137.044v237.537    c0,22.651,8.042,42.018,24.125,58.102c16.084,16.084,35.452,24.126,58.102,24.126h237.541c22.647,0,42.017-8.042,58.101-24.126    c16.085-16.084,24.127-35.45,24.127-58.102v-73.946C401.995,296.829,399.996,294.071,395.996,292.356z"/>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>'
 const webinar_end_icon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="568.766px" height="568.766px" viewBox="0 0 568.766 568.766" style="enable-background:new 0 0 568.766 568.766;" xml:space="preserve"><g>	<path d="M515.192,195.54c-9.113-6.034-19.708-11.619-31.403-16.754l-37.839-13.655c-39.062-11.513-86.015-18.561-136.715-19.22   c-0.401,0-0.822,0-1.205-0.019c-0.43,0-0.803,0-1.233-0.01c-86.445-0.344-207.277,16.887-251.599,45.059   c-32.551,17.729-54.831,52.106-55.195,91.8c-0.134,17.576,4.064,34.205,11.552,48.846c2.85,7.344,9.955,12.564,18.36,12.642   l149.998,1.3c7.812,0.067,14.63-4.456,17.93-10.987l0.038-0.019c8.176-14.793,12.9-31.805,13.053-49.964   c0.105-12.192-1.884-23.945-5.613-34.894c18.322-1.654,82.208-1.473,101.831-1.415c19.584,0.277,38.633,1.434,56.916,3.414   c-3.901,10.873-6.062,22.577-6.158,34.779c-0.162,18.159,4.274,35.257,12.154,50.193l0.096,0.01   c3.184,6.588,9.811,11.226,17.69,11.293l149.997,1.291c8.396,0.066,15.577-5.049,18.542-12.316   c7.765-14.516,12.24-31.06,12.374-48.654C569.105,248.564,547.438,213.814,515.192,195.54z"/>	<path d="M283.866,272.527c-7.249-0.009-13.148,5.881-13.139,13.14l-0.105,86.205l-12.307-15.29   c-6.196-7.707-15.96-10.107-21.831-5.394c-5.862,4.715-5.594,14.784,0.593,22.481l32.407,40.268   c1.176,1.454,2.458,2.688,3.806,3.749c2.429,3.127,6.148,5.202,10.404,5.202c3.231,0,6.167-1.215,8.472-3.156   c2.524-1.3,4.925-3.231,6.962-5.766l32.493-40.201c6.206-7.669,6.503-17.729,0.65-22.491c-5.862-4.714-15.654-2.323-21.86,5.346   l-13.53,16.754l0.096-87.698C296.985,278.437,291.124,272.547,283.866,272.527z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>'
 const settings_icon = '<svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512"><path d="m22.683 9.394-1.88-.239c-.155-.477-.346-.937-.569-1.374l1.161-1.495c.47-.605.415-1.459-.122-1.979l-1.575-1.575c-.525-.542-1.379-.596-1.985-.127l-1.493 1.161c-.437-.223-.897-.414-1.375-.569l-.239-1.877c-.09-.753-.729-1.32-1.486-1.32h-2.24c-.757 0-1.396.567-1.486 1.317l-.239 1.88c-.478.155-.938.345-1.375.569l-1.494-1.161c-.604-.469-1.458-.415-1.979.122l-1.575 1.574c-.542.526-.597 1.38-.127 1.986l1.161 1.494c-.224.437-.414.897-.569 1.374l-1.877.239c-.753.09-1.32.729-1.32 1.486v2.24c0 .757.567 1.396 1.317 1.486l1.88.239c.155.477.346.937.569 1.374l-1.161 1.495c-.47.605-.415 1.459.122 1.979l1.575 1.575c.526.541 1.379.595 1.985.126l1.494-1.161c.437.224.897.415 1.374.569l.239 1.876c.09.755.729 1.322 1.486 1.322h2.24c.757 0 1.396-.567 1.486-1.317l.239-1.88c.477-.155.937-.346 1.374-.569l1.495 1.161c.605.47 1.459.415 1.979-.122l1.575-1.575c.542-.526.597-1.379.127-1.985l-1.161-1.494c.224-.437.415-.897.569-1.374l1.876-.239c.753-.09 1.32-.729 1.32-1.486v-2.24c.001-.757-.566-1.396-1.316-1.486zm-10.683 7.606c-2.757 0-5-2.243-5-5s2.243-5 5-5 5 2.243 5 5-2.243 5-5 5z"/></svg>'
 const report_icon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 24 24" style="enable-background:new 0 0 24 24;" xml:space="preserve"><g>	<path d="M12,0C5.373,0,0,5.373,0,12s5.373,12,12,12s12-5.373,12-12S18.627,0,12,0z M12,19.66   c-0.938,0-1.58-0.723-1.58-1.66c0-0.964,0.669-1.66,1.58-1.66c0.963,0,1.58,0.696,1.58,1.66C13.58,18.938,12.963,19.66,12,19.66z    M12.622,13.321c-0.239,0.815-0.992,0.829-1.243,0c-0.289-0.956-1.316-4.585-1.316-6.942c0-3.11,3.891-3.125,3.891,0   C13.953,8.75,12.871,12.473,12.622,13.321z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>'
 const logout_icon = '<svg xmlns="http://www.w3.org/2000/svg" id="bold" enable-background="new 0 0 24 24" height="512" viewBox="0 0 24 24" width="512"><circle cx="9" cy="6" r="5"/><path d="m13.25 13h-8.5c-2.619 0-4.75 2.131-4.75 4.75v3.5c0 .414.336.75.75.75h16.5c.414 0 .75-.336.75-.75v-3.5c0-2.619-2.131-4.75-4.75-4.75z"/><path d="m23.761 9.45-3.5-3.25c-.141-.131-.325-.199-.51-.199-.496 0-.751.422-.751.749v2.25h-4c-.553 0-1 .448-1 1s.447 1 1 1h4v2.25c0 .416.338.75.75.75.186 0 .369-.069.511-.2l3.5-3.25c.152-.142.239-.342.239-.55s-.087-.408-.239-.55z"/></svg>'
+const default_user_icon = '<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" data-name="Layer 1" viewBox="0 0 99.3 84.43"><circle cx="49.65" cy="22.4" r="22.4"/><rect y="50.86" width="99.3" height="33.57" rx="16.79"/></svg>'
 
 // left aside menu icons
 const clsoe_icon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 492 492" style="enable-background:new 0 0 492 492;" xml:space="preserve"><g>	<g>		<path d="M300.188,246L484.14,62.04c5.06-5.064,7.852-11.82,7.86-19.024c0-7.208-2.792-13.972-7.86-19.028L468.02,7.872    c-5.068-5.076-11.824-7.856-19.036-7.856c-7.2,0-13.956,2.78-19.024,7.856L246.008,191.82L62.048,7.872    c-5.06-5.076-11.82-7.856-19.028-7.856c-7.2,0-13.96,2.78-19.02,7.856L7.872,23.988c-10.496,10.496-10.496,27.568,0,38.052    L191.828,246L7.872,429.952c-5.064,5.072-7.852,11.828-7.852,19.032c0,7.204,2.788,13.96,7.852,19.028l16.124,16.116    c5.06,5.072,11.824,7.856,19.02,7.856c7.208,0,13.968-2.784,19.028-7.856l183.96-183.952l183.952,183.952    c5.068,5.072,11.824,7.856,19.024,7.856h0.008c7.204,0,13.96-2.784,19.028-7.856l16.12-16.116    c5.06-5.064,7.852-11.824,7.852-19.028c0-7.204-2.792-13.96-7.852-19.028L300.188,246z"/>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>';
@@ -137,6 +187,7 @@ const right_arrow_icon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="h
 const zoom_in_icon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve"><g>	<g>		<path d="M496.64,424.96l-71.68-71.68c23.04-35.84,35.84-76.8,35.84-122.88C460.8,102.4,358.4,0,230.4,0S0,102.4,0,230.4    s102.4,230.4,230.4,230.4c46.08,0,87.04-12.8,122.88-35.84l71.68,71.68c20.48,20.48,51.2,20.48,71.68,0    C517.12,476.16,517.12,445.44,496.64,424.96z M230.4,409.6c-99.84,0-179.2-79.36-179.2-179.2S130.56,51.2,230.4,51.2    s179.2,79.36,179.2,179.2S327.68,409.6,230.4,409.6z"/>	</g></g><g>	<g>		<path d="M332.8,204.8H256V128c0-15.36-10.24-25.6-25.6-25.6c-15.36,0-25.6,12.8-25.6,25.6v76.8H128c-12.8,0-25.6,10.24-25.6,25.6    c0,15.36,10.24,25.6,25.6,25.6h76.8v76.8c0,15.36,10.24,25.6,25.6,25.6c15.36,0,25.6-10.24,25.6-25.6V256h76.8    c15.36,0,25.6-10.24,25.6-25.6C358.4,215.04,345.6,204.8,332.8,204.8z"/>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>'
 const full_screen_icon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 489.001 489.001" style="enable-background:new 0 0 489.001 489.001;" xml:space="preserve"><g>	<g>		<path d="M2.2,168.151l-2.1-151.3c-0.1-7.7,6.2-14,13.9-13.9l151.3,2.2c12.1,0.2,18.1,14.8,9.5,23.4l-42.1,42.1l70,70l-65,65    l-70-70l-42.1,42.1C17.1,186.251,2.4,180.251,2.2,168.151z"/>		<path d="M421.3,136.551l42.1,42.1c8.6,8.6,23.2,2.6,23.4-9.5l2.2-151.3c0.1-7.7-6.2-14-13.9-13.9l-151.3,2.2    c-12.1,0.2-18.1,14.8-9.5,23.4l42,41.9l-70,70l65,65L421.3,136.551z"/>		<path d="M314.2,460.451c-8.6,8.6-2.6,23.2,9.5,23.4l151.3,2.2c7.7,0.1,14-6.2,13.9-13.9l-2.2-151.3c-0.2-12.1-14.8-18.1-23.4-9.5    l-42.1,42.1l-70-70l-65,65l70,70L314.2,460.451z"/>		<path d="M14,485.051l151.3-2.2c12.1-0.2,18.1-14.8,9.5-23.4l-42.1-42l70-70l-65-65l-70,70l-42.1-42.1c-8.6-8.6-23.2-2.6-23.4,9.5    L0,471.151C0,478.851,6.3,485.151,14,485.051z"/>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>';
 const send_message_icon = '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 448 448" style="enable-background:new 0 0 448 448;" xml:space="preserve"><g>	<g>		<polygon points="0.213,32 0,181.333 320,224 0,266.667 0.213,416 448,224   "/>	</g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg>'
+
 const popupIcons = [
     'file-gallery',
     'members',
@@ -150,13 +201,13 @@ const popupIcons = [
     'logout'
 ]
 
-const microphone_unmute_btn_name = 'microphone-unmute'
-const microphone_muted_btn_name = 'microphone-muted'
-const speaker_muted_btn_name = 'speaker-muted'
-const speaker_unmute_btn_name = 'speaker-unmute'
-const video_muted_btn_name = 'video-muted'
-const video_unmute_btn_name = 'video-unmute'
-const raise_a_hand_btn_name = 'raise-a-hand'
+const microphone_unmute_name = 'microphone-unmute'
+const microphone_muted_name = 'microphone-muted'
+const speaker_muted_name = 'speaker-muted'
+const speaker_unmute_name = 'speaker-unmute'
+const video_muted_name = 'video-muted'
+const video_unmute_name = 'video-unmute'
+const raise_a_hand_name = 'raise-a-hand'
 const more_btn_name = 'more-popup'
 const file_btn_name = 'file-gallery'
 const blackboard_btn_name = 'blackboard'
@@ -172,5 +223,5 @@ const full_screen_btn_name = 'full-screen'
 const settings_btn_name = 'settings'
 const webinar_end_btn_name = 'webinar-end'
 const members_btn_name = 'members'
-const chat_btn_name = 'mindalay-chat'
+const chat_name = 'mindalay-chat'
 const send_message_btn_name = 'send-message'

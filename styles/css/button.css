@@ -123,8 +123,7 @@ button[type="button"]:focus {
 @media (min-width: 768px) {
   .mindalay--button-has-notification:before,
   .mindalay--button-has-notification:after {
-    top: 20%;
-    right: 30%;
+    right: 20px;
   }
   .mindalay--btn {
     font-size: 16px;

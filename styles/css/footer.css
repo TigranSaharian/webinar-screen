@@ -33,9 +33,6 @@ hr {
 .mindalay--footer .mindalay--footer-container .mindalay--btn-group .mindalay--btn-wrapper:nth-child(2) {
   flex: 80%;
 }
-.mindalay--footer .mindalay--footer-container .mindalay--btn-group .mindalay--btn-wrapper:nth-child(3) {
-  flex: 10%;
-}
 .mindalay--footer .mindalay--footer-container .mindalay--btn-group .mindalay--btn-start {
   text-align: left;
 }

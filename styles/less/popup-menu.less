@@ -10,158 +10,131 @@
 }
 
 .mindalay--right-menu{
+    position: fixed;
     top: 0;
     right: 0;
     z-index: 1;
-    transform: translateX(120%);
+    transform: translate(120%);
     .transition;
-    .mindalay--popup-container{
-        height: calc(100vh - 55px);
-        .mindalay--popup-header{
-            padding: 25px;
-        }
-        .mindalay--popup-body{
-            position: absolute;
-            bottom: 0;
-            .mindalay--chat-message-container{
-                overflow: auto;
-                padding: 10px 0;
-                height: calc(100vh - 200px);
-                .chat-container-to-up{
-                    .transition;
-                    padding: 25px 0;
-                    display: block;
-                }
-                .mindalay--currnet-user{
-                    justify-content: flex-end;
-                    .mindalay--chat-message{
-                        background-color: lighten(@mindalay--blue-color, 50%) !important;
-                    }
-                }
-            }
-        }
-    }
-}
-
-.mindalay--popup{
-    position: fixed;
-    .mindalay--popup-container{
+    .mindalay--right-menu-container{
+        height: calc(100vh - 60px);
         background-color: @mindalay--white-color;
         .box-shadow;
-        .mindalay--popup-header{
-            border-bottom: 1px solid lighten(@mindalay--gray-color, 20%);
-            display: flex;
-            align-items: center;
-            position: relative;
-            z-index: 2;
-            background-color: @mindalay--white-color;
-            .mindalay--more-popup-default-image{
-                background-color: @mindalay--brand-color;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-radius: 50%;
+        .mindalay--right-menu-header{
+            padding: 20px;
+            .counts-items{
+                margin-left: 5px;
+            }
+            >p, strong,span{
                 color: @mindalay--white-color;
-                font-size: 20px;
-                font-weight: bold;
-            }
-            .mindalay--more-popup-user-image{
-                background-size: cover;
-                background-repeat: no-repeat;
-                background-position: center;
-                border-radius: 50%;
-            }
-            .mindalay--more-popup-user-info{
-                padding: 0 15px;
-                .mindalay--more-popup-user-name{
-                    font-weight: 600;
-                }
-                .mindalay--more-popup-user-type{
-                    text-transform: capitalize;
-                    opacity: .8;
-                }
-            }
-            .mindalay--popup-close-button{
-                position: absolute;
-                padding: 0 20px;
-                right: 0;
-                top: 0%;
-                display: flex;
-                background-color: lighten(@mindalay--brand-color, 50%);
-                height: 100%;
-                cursor: pointer;
-                .transition;
             }
         }
-        .mindalay--popup-body{
-            padding: 5px 0;
+        .mindalay--right-menu-body{
+            position: absolute;
+            bottom: 0;
             width: 100%;
-            li{
-                .popup-button{
-                    border: none;
-                    background-color: @mindalay--white-color;
-                    cursor: pointer;
-                    padding: 15px 20px;
-                    width: 100%;
+            height: calc(100% - 70px);
+            padding: 5px 0;
+            .mindalay--right-menu-item-wrapper{
+                .mindalay--member-body{
                     display: flex;
                     align-items: center;
-                    font-size: @text-size-screen;
-                    svg{
-                        width: 25px;
-                        height: auto;
-                        margin-right: 10px;
-                        *{
-                            fill: @mindalay--dark-color;
+                    padding: 10px;
+                    border-bottom: solid .5px lighten(@mindalay--gray-color, 20%);
+                    .mindalay--member-wrapper{
+                        display: flex;
+                        flex: 50%;
+                        align-items: center;
+                        margin: 0;
+                        .mindlay--member-fullname{
+                            flex: 1;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            max-width: 125px;
+                            margin-left: 10px;
                         }
-                    }
-                    &:hover{
-                        background-color: lighten(@mindalay--dark-color, 75%);
-                    }
-                }
-            }
-            .mindalay--chat-message-container{
-                .mindalay--chat-message-wrapper{
-                    padding: 10px 15px;
-                    display: flex;
-                    .mindalay--chat-member-wrapper{
-                        margin: 10px;
-                        height: fit-content;
-                        .mindalay--chat-member-default-image{
+                        .mindalay--member{
+                            width: 35px;
+                            height: 35px;
+                            display: flex;
                             justify-content: center;
                             align-items: center;
-                            color: @mindalay--white-color;
-                            display: flex;
-                        }
-                        .mindalay--chat-member,
-                        .mindalay--chat-member-default-image{
-                            background-position: center;
-                            background-size: cover;
-                            background-repeat: no-repeat;
-                            width: 30px;
-                            height: 30px;
-                            border-radius: 50%;
-                            position: relative;
-                            background-color: @mindalay--brand-color;
-                        }
-                        
-                        .member-online-status{
-                            &::after{
-                                width: 8px;
-                                height: 8px;
-                                bottom: -4px;
-                                right: -4px;
+                            svg{
+                                width: 18px;
+                                opacity: .6;
+                                *{
+                                    fill: @mindalay--white-color;
+                                }
                             }
                         }
                     }
+                    .mindlay--member-options-wrapper{
+                        display: flex;
+                        flex: 50%;
+                        align-items: center;
+                        justify-content: flex-end;
+                        .mindlay--member-activity-timer{
+                            padding: 7px 10px;
+                            margin: 0 3px;
+                            background-color: @mindalay--green-color;
+                            color: @mindalay--white-color;
+                            border-radius: @border-radius-3;
+                            font-size: @text-size-13;
+                            min-width: 60px;
+                            text-align: center;
+                        }
+                        button{
+                            cursor: pointer;
+                            padding: 5px 10px;
+                            border: .5px solid @mindalay--gray-color;
+                            border-radius: @border-radius-3;
+                            background-color: @mindalay--white-color;
+                            margin: 0 3px;
+                            min-height: 30px;
+                            display: flex;
+                            align-items: center;
+                            svg{
+                                opacity: .9;
+                                height: auto;
+                                width: 17px;
+                                *{
+                                    fill: @mindalay--dark-color;
+                                }
+                            }
+                            &:hover{
+                                border-color: @mindalay--brand-color;
+                                background-color: @mindalay--brand-color;
+                                *{
+                                    fill: @mindalay--white-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .mindalay--chat-body-container{
+                overflow: auto;
+                padding: 10px 0;
+                height: calc(100vh - 230px);
+                .mindalay--chat-message-wrapper{
+                    padding: 10px 15px;
+                    display: flex;
                     .mindalay--chat-message{
-                        background-color: lighten(@mindalay--gray-color, 35%);
+                        background-color: lighten(@mindalay--gray-color, 32%);
                         font-size: @message-text-font-size;
                         border-radius: @border-radius-3;
                         padding: 10px;
+                        min-width: 200px;
+                        .mindalay--chat-message-text{
+                            font-size: @text-size-14;
+                            margin-top: 5px;
+                        }
                         .mindalay--chat-username{
                             margin-bottom: 2px;
                             display: block;
                         }
+                        
                     }
                     .mindalay--chat-message-date{
                         font-size: @message-date-font-size;
@@ -171,9 +144,30 @@
                         text-align: right;
                     }
                 }
+                .mindalay--currnet-user{
+                    justify-content: flex-end;
+                    .mindalay--chat-message{
+                        background-color: lighten(@mindalay--blue-color, 50%) !important;
+                    }
+                }
+                .mindalay--other-user{
+                    .mindalay--chat-message{
+                        position: relative;
+                        &::before{
+                            content: '';
+                            position: absolute;
+                            top: 20px;
+                            left: -5px;
+                            width: 10px;
+                            height: 10px;
+                            transform: rotate(45deg);
+                            background-color: lighten(@mindalay--gray-color, 32%);
+                        }
+                    }
+                }
             }
             .mindalay--chat-input-wrapper{
-                padding: 10px 15px;
+                padding: 15px;
                 position: relative;
                 z-index: 0;
                 .mindalay--input{
@@ -234,31 +228,146 @@
                 }
             }
         }
-        .chat-header{
-            display: flex;
-            justify-content: flex-end;
-            padding: 0;
-            svg{
-                padding: 15px;
+    }
+}
+
+.mindalay--popup{
+    position: fixed;
+    .mindalay--popup-container{
+        background-color: @mindalay--white-color;
+        .box-shadow;
+        .mindalay--popup-header{
+            .mindalay--more-popup-default-image{
+                background-color: @mindalay--brand-color;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                color: @mindalay--white-color;
+                font-size: 20px;
+                font-weight: bold;
+            }
+            .mindalay--more-popup-user-image{
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                border-radius: 50%;
+            }
+            .mindalay--more-popup-user-info{
+                padding: 0 15px;
+                .mindalay--more-popup-user-name{
+                    font-weight: 600;
+                }
+                .mindalay--more-popup-user-type{
+                    text-transform: capitalize;
+                    opacity: .8;
+                }
+            }
+        }
+        .mindalay--popup-body{
+            padding: 5px 0;
+            width: 100%;
+            li{
+                .popup-button{
+                    border: none;
+                    background-color: @mindalay--white-color;
+                    cursor: pointer;
+                    padding: 15px 20px;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    font-size: @text-size-screen;
+                    svg{
+                        width: 25px;
+                        height: auto;
+                        margin-right: 10px;
+                        *{
+                            fill: @mindalay--dark-color;
+                        }
+                    }
+                    &:hover{
+                        background-color: lighten(@mindalay--dark-color, 75%);
+                    }
+                }
             }
         }
     }
 
 }
 
-.mindalay--popup-close-button{
-    svg{
-        width: 15px;
-        background-color: lighten(@mindalay--brand-color, 50%);
-        *{
-            fill: lighten(@mindalay--brand-color, 20%);
+.mindalay--member-wrapper{
+    margin: 10px;
+    height: fit-content;
+    .mindalay--member-default-image{
+        justify-content: center;
+        align-items: center;
+        color: @mindalay--white-color;
+        display: flex;
+    }
+    .mindalay--member,
+    .mindalay--member-default-image{
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        position: relative;
+        background-color: @mindalay--brand-color;
+    }
+    .member-online-status{
+        &::after{
+            width: 8px;
+            height: 8px;
+            bottom: -2px;
+            right: -2px;
         }
     }
-    &:hover{
-        background-color: lighten(@mindalay--brand-color, 48%);
+}
+
+.mindalay--popup-header,
+.mindalay--right-menu-header{
+    border-bottom: 1px solid lighten(@mindalay--gray-color, 20%);
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+    background-color: @mindalay--white-color;
+    min-height: 20px;
+    .mindalay--right-menu-title-wrapper{
+        display: flex;
+        justify-content: space-between;
+        width: calc(100% - 50px);
+        label{
+            color: @mindalay--white-color;
+        }
+        p{
+            color: @mindalay--white-color;
+        }
+    }
+    .mindalay--popup-close-button{
+        position: absolute;
+        padding: 0 20px;
+        right: 0;
+        top: 0%;
+        display: flex;
+        background-color: lighten(@mindalay--brand-color, 50%);
+        height: 100%;
+        cursor: pointer;
+        .transition;
         svg{
+            width: 15px;
             *{
-                fill: @mindalay--brand-color;
+                .transition;
+                fill: lighten(@mindalay--brand-color, 20%);
+            }
+        }
+        &:hover{
+            background-color: lighten(@mindalay--brand-color, 48%);
+            svg{
+                *{
+                    fill: @mindalay--brand-color;
+                }
             }
         }
     }

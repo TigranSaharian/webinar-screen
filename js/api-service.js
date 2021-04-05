@@ -17,7 +17,7 @@ function getTranslations() {
     translations = [];
     getSiteTranslations().then(() => {
         getDefaultTranslations().then(() => {
-            SetTranslationToHTML();
+            setGlobalTranslationToHTML();
         })
     })
 }
@@ -78,7 +78,7 @@ function setCurrentLanguage() {
     $(`#${currentLanguage}`).attr('class', 'active-lg')
 }
 
-function SetTranslationToHTML() {
+function setGlobalTranslationToHTML() {
     $('.translation').each(function () {
         var id = $(this).attr('data-id');
         var alt = $(this).attr('data-alt');
@@ -97,34 +97,25 @@ function SetTranslationToHTML() {
         }
 
         if (id && id.length) {
-            var selectedTranslation = translations.find(x => x.shortKey == id);
-            selectedTranslation && $(this).append(selectedTranslation.translation1);
+            var selectedTranslationId = translations.find(x => x.shortKey == id);
+            selectedTranslationId && $(this).append(selectedTranslationId.translation1);
             return;
         }
 
         if (placeholder && placeholder.length) {
-            var selectedTranslationAlt = translations.find(x => x.shortKey == placeholder);
-            selectedTranslationAlt && $(this).attr('placeholder', selectedTranslationAlt.translation1);
+            var selectedTranslationpPlaceholder = translations.find(x => x.shortKey == placeholder);
+            selectedTranslationpPlaceholder && $(this).attr('placeholder', selectedTranslationpPlaceholder.translation1);
             return;
         }
     });
 }
 
-function setTranslation(translationkey, translationValue){
-    return $(this).attr(translationkey, translationValue);
+function getTranslation(element, translationKey, translationValue){
+    element.attr(translationKey, translationValue);
+    let translatedValue = setTranslation(translationValue)
+    translationKey.split('-')[1] == 'id' ? element.append(translatedValue) : element.attr(translationKey.split('-')[1], translatedValue)
 }
 
-function setViaTitleTransation(translationkey, translationValue){
-    var selectedTranslationTitle = translations.find(x => x.shortKey == translationkey);
-    selectedTranslationTitle && $(this).attr('title', selectedTranslationTitle.translation1);
-    return;
-}
-function setViaAltTransation(translationkey, translationValue){
-
-}
-function setViaIdTransation(translationkey, translationValue){
-
-}
-function setViaPlaceholderTransation(translationkey, translationValue){
-
+function setTranslation(translationValue){
+    return translations.find(x => x.shortKey == translationValue).translation1
 }

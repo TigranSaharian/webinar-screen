@@ -1,5 +1,5 @@
-function GetMoreOptionsPopupHTML(user) {
-    let isOnline = GetUserOnlineStyle(user)
+function getMoreOptionsPopup(user) {
+    let isOnline = getUserOnlineStatusStyle(user)
     let userAvatar = '';
     if(!user.avatarUrl){
         userAvatar = `<div class="${isOnline} member-online-status mindalay--more-popup-default-image">${user.firstname.charAt(0)}</div>`

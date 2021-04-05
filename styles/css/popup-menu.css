@@ -21,37 +21,219 @@ hr {
   padding: 15px 20px;
 }
 .mindalay--right-menu {
+  position: fixed;
   top: 0;
   right: 0;
   z-index: 1;
-  transform: translateX(120%);
+  transform: translate(120%);
   transition: 0.3s;
 }
-.mindalay--right-menu .mindalay--popup-container {
-  height: calc(100vh - 55px);
+.mindalay--right-menu .mindalay--right-menu-container {
+  height: calc(100vh - 60px);
+  background-color: #ffffff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
-.mindalay--right-menu .mindalay--popup-container .mindalay--popup-header {
-  padding: 25px;
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-header {
+  padding: 20px;
 }
-.mindalay--right-menu .mindalay--popup-container .mindalay--popup-body {
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-header .counts-items {
+  margin-left: 5px;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-header > p,
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-header strong,
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-header span {
+  color: #ffffff;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body {
   position: absolute;
   bottom: 0;
+  width: 100%;
+  height: calc(100% - 70px);
+  padding: 5px 0;
 }
-.mindalay--right-menu .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container {
-  overflow: auto;
-  padding: 10px 0;
-  height: calc(100vh - 200px);
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: solid 0.5px #cfcfcf;
 }
-.mindalay--right-menu .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .chat-container-to-up {
-  transition: 0.3s;
-  padding: 25px 0;
-  display: block;
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindalay--member-wrapper {
+  display: flex;
+  flex: 50%;
+  align-items: center;
+  margin: 0;
 }
-.mindalay--right-menu .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--currnet-user {
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindalay--member-wrapper .mindlay--member-fullname {
+  flex: 1;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  max-width: 125px;
+  margin-left: 10px;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindalay--member-wrapper .mindalay--member {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindalay--member-wrapper .mindalay--member svg {
+  width: 18px;
+  opacity: 0.6;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindalay--member-wrapper .mindalay--member svg * {
+  fill: #ffffff;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindlay--member-options-wrapper {
+  display: flex;
+  flex: 50%;
+  align-items: center;
   justify-content: flex-end;
 }
-.mindalay--right-menu .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--currnet-user .mindalay--chat-message {
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindlay--member-options-wrapper .mindlay--member-activity-timer {
+  padding: 7px 10px;
+  margin: 0 3px;
+  background-color: #06B400;
+  color: #ffffff;
+  border-radius: 3px;
+  font-size: 13px;
+  min-width: 60px;
+  text-align: center;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindlay--member-options-wrapper button {
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 0.5px solid #9c9c9c;
+  border-radius: 3px;
+  background-color: #ffffff;
+  margin: 0 3px;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindlay--member-options-wrapper button svg {
+  opacity: 0.9;
+  height: auto;
+  width: 17px;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindlay--member-options-wrapper button svg * {
+  fill: #222F3E;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindlay--member-options-wrapper button:hover {
+  border-color: #B53471;
+  background-color: #B53471;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-item-wrapper .mindalay--member-body .mindlay--member-options-wrapper button:hover * {
+  fill: #ffffff;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-body-container {
+  overflow: auto;
+  padding: 10px 0;
+  height: calc(100vh - 230px);
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-body-container .mindalay--chat-message-wrapper {
+  padding: 10px 15px;
+  display: flex;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-body-container .mindalay--chat-message-wrapper .mindalay--chat-message {
+  background-color: #eeeeee;
+  font-size: 14px;
+  border-radius: 3px;
+  padding: 10px;
+  min-width: 200px;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-body-container .mindalay--chat-message-wrapper .mindalay--chat-message .mindalay--chat-message-text {
+  font-size: 14px;
+  margin-top: 5px;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-body-container .mindalay--chat-message-wrapper .mindalay--chat-message .mindalay--chat-username {
+  margin-bottom: 2px;
+  display: block;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-body-container .mindalay--chat-message-wrapper .mindalay--chat-message-date {
+  font-size: 11px;
+  font-weight: 600;
+  margin-top: 5px;
+  display: block;
+  text-align: right;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-body-container .mindalay--currnet-user {
+  justify-content: flex-end;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-body-container .mindalay--currnet-user .mindalay--chat-message {
   background-color: #e7f2fa !important;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-body-container .mindalay--other-user .mindalay--chat-message {
+  position: relative;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-body-container .mindalay--other-user .mindalay--chat-message::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: -5px;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  background-color: #eeeeee;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-input-wrapper {
+  padding: 15px;
+  position: relative;
+  z-index: 0;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-input-wrapper .mindalay--input {
+  padding-right: 35px !important;
+  border-color: #B53471;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-input-wrapper .typing-transform-bottom {
+  top: -21px !important;
+  transform: translateY(0) !important;
+  transition: 0.3s;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-input-wrapper .mindalay-chat-typing {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  right: 15px;
+  padding: 5px 10px;
+  background-color: #e9e9e9;
+  border-radius: 15px;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-input-wrapper .mindalay-chat-typing span {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  margin-right: 5px;
+  background: #b6b6b6;
+  animation: wave 1s linear infinite;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-input-wrapper .mindalay-chat-typing span:nth-child(2) {
+  animation-delay: -1.1s;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-input-wrapper .mindalay-chat-typing span:nth-child(3) {
+  animation-delay: -0.9s;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-input-wrapper .mindalay--chat-send-message-button {
+  box-sizing: content-box;
+  width: fit-content;
+  position: absolute;
+  background-color: #ffffff;
+  padding: 5px;
+  line-height: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 20px;
+  cursor: pointer;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-input-wrapper .mindalay--chat-send-message-button svg {
+  width: 25px;
+}
+.mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-input-wrapper .mindalay--chat-send-message-button svg * {
+  fill: #B53471;
 }
 .mindalay--popup {
   position: fixed;
@@ -59,14 +241,6 @@ hr {
 .mindalay--popup .mindalay--popup-container {
   background-color: #ffffff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
-}
-.mindalay--popup .mindalay--popup-container .mindalay--popup-header {
-  border-bottom: 1px solid #cfcfcf;
-  display: flex;
-  align-items: center;
-  position: relative;
-  z-index: 2;
-  background-color: #ffffff;
 }
 .mindalay--popup .mindalay--popup-container .mindalay--popup-header .mindalay--more-popup-default-image {
   background-color: #B53471;
@@ -94,17 +268,6 @@ hr {
   text-transform: capitalize;
   opacity: 0.8;
 }
-.mindalay--popup .mindalay--popup-container .mindalay--popup-header .mindalay--popup-close-button {
-  position: absolute;
-  padding: 0 20px;
-  right: 0;
-  top: 0%;
-  display: flex;
-  background-color: #faeef4;
-  height: 100%;
-  cursor: pointer;
-  transition: 0.3s;
-}
 .mindalay--popup .mindalay--popup-container .mindalay--popup-body {
   padding: 5px 0;
   width: 100%;
@@ -130,22 +293,18 @@ hr {
 .mindalay--popup .mindalay--popup-container .mindalay--popup-body li .popup-button:hover {
   background-color: #ebeff4;
 }
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper {
-  padding: 10px 15px;
-  display: flex;
-}
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-member-wrapper {
+.mindalay--member-wrapper {
   margin: 10px;
   height: fit-content;
 }
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-member-wrapper .mindalay--chat-member-default-image {
+.mindalay--member-wrapper .mindalay--member-default-image {
   justify-content: center;
   align-items: center;
   color: #ffffff;
   display: flex;
 }
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-member-wrapper .mindalay--chat-member,
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-member-wrapper .mindalay--chat-member-default-image {
+.mindalay--member-wrapper .mindalay--member,
+.mindalay--member-wrapper .mindalay--member-default-image {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -155,106 +314,63 @@ hr {
   position: relative;
   background-color: #B53471;
 }
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-member-wrapper .member-online-status::after {
+.mindalay--member-wrapper .member-online-status::after {
   width: 8px;
   height: 8px;
-  bottom: -4px;
-  right: -4px;
+  bottom: -2px;
+  right: -2px;
 }
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-message {
-  background-color: #f5f5f5;
-  font-size: 14px;
-  border-radius: 3px;
-  padding: 10px;
-}
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-message .mindalay--chat-username {
-  margin-bottom: 2px;
-  display: block;
-}
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-message-container .mindalay--chat-message-wrapper .mindalay--chat-message-date {
-  font-size: 11px;
-  font-weight: 600;
-  margin-top: 5px;
-  display: block;
-  text-align: right;
-}
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-input-wrapper {
-  padding: 10px 15px;
+.mindalay--popup-header,
+.mindalay--right-menu-header {
+  border-bottom: 1px solid #cfcfcf;
+  display: flex;
+  align-items: center;
   position: relative;
-  z-index: 0;
+  z-index: 2;
+  background-color: #ffffff;
+  min-height: 20px;
 }
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-input-wrapper .mindalay--input {
-  padding-right: 35px !important;
-  border-color: #B53471;
+.mindalay--popup-header .mindalay--right-menu-title-wrapper,
+.mindalay--right-menu-header .mindalay--right-menu-title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 50px);
 }
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-input-wrapper .typing-transform-bottom {
-  top: -21px !important;
-  transform: translateY(0) !important;
+.mindalay--popup-header .mindalay--right-menu-title-wrapper label,
+.mindalay--right-menu-header .mindalay--right-menu-title-wrapper label {
+  color: #ffffff;
+}
+.mindalay--popup-header .mindalay--right-menu-title-wrapper p,
+.mindalay--right-menu-header .mindalay--right-menu-title-wrapper p {
+  color: #ffffff;
+}
+.mindalay--popup-header .mindalay--popup-close-button,
+.mindalay--right-menu-header .mindalay--popup-close-button {
+  position: absolute;
+  padding: 0 20px;
+  right: 0;
+  top: 0%;
+  display: flex;
+  background-color: #faeef4;
+  height: 100%;
+  cursor: pointer;
   transition: 0.3s;
 }
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-input-wrapper .mindalay-chat-typing {
-  position: absolute;
-  z-index: -1;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  right: 15px;
-  padding: 5px 10px;
-  background-color: #e9e9e9;
-  border-radius: 15px;
-}
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-input-wrapper .mindalay-chat-typing span {
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  margin-right: 5px;
-  background: #b6b6b6;
-  animation: wave 1s linear infinite;
-}
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-input-wrapper .mindalay-chat-typing span:nth-child(2) {
-  animation-delay: -1.1s;
-}
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-input-wrapper .mindalay-chat-typing span:nth-child(3) {
-  animation-delay: -0.9s;
-}
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-input-wrapper .mindalay--chat-send-message-button {
-  box-sizing: content-box;
-  width: fit-content;
-  position: absolute;
-  background-color: #ffffff;
-  padding: 5px;
-  line-height: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 20px;
-  cursor: pointer;
-}
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-input-wrapper .mindalay--chat-send-message-button svg {
-  width: 25px;
-}
-.mindalay--popup .mindalay--popup-container .mindalay--popup-body .mindalay--chat-input-wrapper .mindalay--chat-send-message-button svg * {
-  fill: #B53471;
-}
-.mindalay--popup .mindalay--popup-container .chat-header {
-  display: flex;
-  justify-content: flex-end;
-  padding: 0;
-}
-.mindalay--popup .mindalay--popup-container .chat-header svg {
-  padding: 15px;
-}
-.mindalay--popup-close-button svg {
+.mindalay--popup-header .mindalay--popup-close-button svg,
+.mindalay--right-menu-header .mindalay--popup-close-button svg {
   width: 15px;
-  background-color: #faeef4;
 }
-.mindalay--popup-close-button svg * {
+.mindalay--popup-header .mindalay--popup-close-button svg *,
+.mindalay--right-menu-header .mindalay--popup-close-button svg * {
+  transition: 0.3s;
   fill: #d877a5;
 }
-.mindalay--popup-close-button:hover {
+.mindalay--popup-header .mindalay--popup-close-button:hover,
+.mindalay--right-menu-header .mindalay--popup-close-button:hover {
   background-color: #f8e6ee;
 }
-.mindalay--popup-close-button:hover svg * {
+.mindalay--popup-header .mindalay--popup-close-button:hover svg *,
+.mindalay--right-menu-header .mindalay--popup-close-button:hover svg * {
   fill: #B53471;
 }
 @keyframes wave {

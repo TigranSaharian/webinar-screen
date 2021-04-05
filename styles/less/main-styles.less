@@ -99,6 +99,10 @@ ul,li{
 .mindalay--green-color-background{
     background-color: @mindalay--green-color !important;
 }
+.mindalay--orange-color-background{
+    background-color: @mindalay--orange-color !important;
+}
+
 
 .brand-color{
     color: @mindalay--brand-color !important;
@@ -114,6 +118,9 @@ ul,li{
 }
 .gray-color{
     color: @mindalay--gray-color !important;
+}
+.orange-color{
+    color: @mindalay--orange-color !important;
 }
 .red-color{
     color: @mindalay--red-color;
@@ -176,17 +183,42 @@ ul,li{
     .mindalay--more-popup-user-name{
         font-size: @popup-username-font-size-screen;
     }
-    #popup--chat-button{
+    #popup--mindalay-chat{
         display: none !important;
     }
     .mindalay--more-options{
         bottom: calc(100% -65px);
         right: 10px !important;
     }
+    .mindalay--popup-container,
+    .mindalay--right-menu-container{
+        width: 400px;
+    }
     .mindalay--popup{
         .mindalay--popup-container{
             border-radius: @border-radius-3;
-            width: 400px;
+            
+        }
+    }
+    .flags-dropdown{
+        margin: 0 15px;
+        line-height: 0;
+        .flags-button{
+            background-color: transparent;
+            border: none;
+            position: relative;
+            width: 30px;
+        }
+        .flags-dropdown-menu{
+            position: absolute;
+            top: calc(-100% - 70px);
+            .flags-dropdown-item{
+                display: block;
+                margin: 10px 0;
+                img{
+                    width: 30px;
+                }
+            }
         }
     }
 }
@@ -194,22 +226,21 @@ ul,li{
     .mindalay--more-popup-user-name{
         font-size: @popup-username-font-size-mobile;
     }
-    .mindalay--right-menu{
-        .mindalay--popup-container{
-            width: 100vw;
-        }
+    .mindalay--popup-container,
+    .mindalay--right-menu-container{
+        width: 100vw;
+        border-radius: 0%;
     }
     .mindalay--more-options{
         .mindalay--popup-container{
-            min-width: 100vw;
-            border-radius: 0%;
             .mindalay--popup-body{
                 overflow-y: auto;
                 height: calc(100vh - 155px);
             }
         }
     }
-    .mindalay--popup{
+    .mindalay--popup,
+    .mindalay--right-menu{
         right: 0;
         top: 0;
     }
