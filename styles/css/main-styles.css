@@ -228,7 +228,7 @@ li {
     display: none !important;
   }
   .mindalay--more-options {
-    bottom: calc(100% -65px);
+    bottom: calc(100% - 65px);
     right: 10px !important;
   }
   .mindalay--popup-container,
@@ -271,7 +271,7 @@ li {
   }
   .mindalay--more-options .mindalay--popup-container .mindalay--popup-body {
     overflow-y: auto;
-    height: calc(100vh - 155px);
+    height: calc(100vh - 160px);
   }
   .mindalay--popup,
   .mindalay--right-menu {

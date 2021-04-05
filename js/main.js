@@ -92,7 +92,7 @@ $(document).ready(function(){
             setTimeout(() => {
                 $('#mindalay--right-menu').children().remove();
                 toggleRightMenu(targetName)
-            }, 300)
+            }, 150)
         }else{
             toggleRightMenu(targetName)
         }
