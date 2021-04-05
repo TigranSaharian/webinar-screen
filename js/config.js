@@ -8,7 +8,7 @@ var user = {
     usertype: 'lecturer',
     fullname: 'Jon Smith',
     isOnline: true,
-    avatarUrl: '/assets/image/profile-image.jpg'
+    avatarUrl: 'assets/image/profile-image.jpg'
 }
 
 var users = [
@@ -19,7 +19,7 @@ var users = [
         usertype: 'lecturer',
         fullname: 'Jon Smith',
         isOnline: true,
-        avatarUrl: '/assets/image/profile-image.jpg',
+        avatarUrl: 'assets/image/profile-image.jpg',
         isMicrohopneMuted : true,
         isVideo : true,
         activityTime : '12:04:00'
