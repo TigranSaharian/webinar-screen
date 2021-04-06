@@ -26,10 +26,10 @@ hr {
   right: 0;
   z-index: 1;
   transform: translate(120%);
+  height: calc(100vh - 60px);
   transition: 0.3s;
 }
 .mindalay--right-menu .mindalay--right-menu-container {
-  height: calc(100vh - 60px);
   background-color: #ffffff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
@@ -51,8 +51,9 @@ hr {
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: calc(100% - 70px);
+  height: calc(100% - 65px);
   padding: 5px 0;
+  background-color: #ffffff;
 }
 .mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--right-menu-items-wrapper {
   max-height: calc(100vh - 125px);
@@ -150,8 +151,7 @@ hr {
 }
 .mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-body-container {
   overflow: auto;
-  padding: 10px 0;
-  height: calc(100vh - 230px);
+  height: calc(100vh - 205px);
 }
 .mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-body-container .mindalay--chat-message-wrapper {
   padding: 10px 15px;
@@ -199,9 +199,11 @@ hr {
   background-color: #eeeeee;
 }
 .mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-input-wrapper {
-  padding: 15px;
-  position: relative;
+  padding: 10px;
   z-index: 0;
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 20px);
 }
 .mindalay--right-menu .mindalay--right-menu-container .mindalay--right-menu-body .mindalay--chat-input-wrapper .mindalay--input {
   padding-right: 35px !important;
