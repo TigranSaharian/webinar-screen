@@ -47,11 +47,11 @@ hr {
 }
 body {
   background-color: #2b3b4e;
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
+  min-height: 100vh !important;
+  min-height: -webkit-fill-available !important;
 }
 html {
-  height: -webkit-fill-available;
+  height: -webkit-fill-available !important;
 }
 body,
 h1,

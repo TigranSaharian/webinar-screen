@@ -19,12 +19,12 @@
 
 body{
     background-color: lighten(@mindalay--dark-color, 5%);
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
+    min-height: 100vh !important;
+    min-height: -webkit-fill-available !important;
 }
 
 html {
-    height: -webkit-fill-available;
+    height: -webkit-fill-available !important;
 }
 
 body,h1,h2,h3,h4,h5,h6,p,a,strong,span,small,button{
@@ -199,6 +199,16 @@ ul,li{
     .mindalay--popup-container,
     .mindalay--right-menu-container{
         width: 400px;
+        // height: calc(100vh - 60px);
+        // .mindalay--right-menu-body{
+        //     height: calc(100% - 60px);
+        //     .mindalay--chat-body-container{
+        //         height: calc(100vh - 220px);
+        //         .mindalay--right-menu-items-wrapper{
+        //             max-height: calc(100vh - 125px);
+        //         }
+        //     }
+        // }
     }
     .mindalay--popup{
         .mindalay--popup-container{
@@ -236,6 +246,15 @@ ul,li{
     .mindalay--right-menu-container{
         width: 100vw;
         border-radius: 0%;
+        // .mindalay--right-menu-body{
+        //     height: calc(100% - 60px);
+        //     .mindalay--chat-body-container{
+        //         height: calc(100vh - 270px);
+        //         .mindalay--right-menu-items-wrapper{
+        //             max-height: calc(100vh - 125px);
+        //         }
+        //     }
+        // }
     }
     .mindalay--more-options{
         .mindalay--popup-container{

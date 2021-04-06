@@ -27,18 +27,18 @@
             }
             >p, strong,span{
                 color: @mindalay--white-color;
-            }
+            }.mindalay--chat-body-container
             label{
                 cursor: pointer;
             }
         }
         .mindalay--right-menu-body{
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: calc(100% - 60px);
+            // position: absolute;
+            // bottom: 0;
+            // width: 100%;
+            // height: calc(100% - 60px);
             .mindalay--right-menu-items-wrapper{
-                max-height: calc(100vh - 125px);
+                // max-height: calc(100vh - 125px);
                 overflow-y: auto;
                 .mindalay--right-menu-item-wrapper{
                     display: flex;
@@ -105,7 +105,6 @@
                             border-radius: @border-radius-3;
                             background-color: @mindalay--white-color;
                             margin: 0 3px;
-                            // min-height: 30px;
                             display: flex;
                             align-items: center;
                             svg{
@@ -129,8 +128,8 @@
             }
             .mindalay--chat-body-container{
                 overflow: auto;
-                padding: 10px 0;
-                height: calc(100vh - 220px);
+                // padding: 10px 0;
+                height: calc(100vh - 200px);
                 .mindalay--chat-message-wrapper{
                     padding: 10px 15px;
                     display: flex;
@@ -191,36 +190,7 @@
                 .typing-transform-bottom{
                     top: -21px !important;
                     transform: translateY(0) !important;
-                    // z-index: 1 !important;
                     .transition;
-                }
-                .mindalay-chat-typing{
-                    position: absolute;
-                    z-index: -1;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    display: flex;
-                    right: 15px;
-                    padding: 5px 10px;
-                    background-color: lighten(@mindalay--gray-color, 30%);
-                    border-radius: 15px;
-                    span{
-                        display:inline-block;
-                        width:5px;
-                        height:5px;
-                        border-radius:50%;
-                        margin-right:5px;
-                        background: lighten(@mindalay--gray-color, 10%);
-                        animation: wave 1s linear infinite;
-                
-                        &:nth-child(2) {
-                            animation-delay: -1.1s;
-                        }
-                
-                        &:nth-child(3) {
-                            animation-delay: -0.9s;
-                        }
-                    }
                 }
                 .mindalay--chat-send-message-button{
                     box-sizing: content-box;
