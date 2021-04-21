@@ -47,6 +47,15 @@ button[type="button"]{
     }
 }
 
+.mindalay--btn-blue{
+    background-color: @mindalay--blue-color;
+    color: @mindalay--white-color;
+    border: 1px solid @mindalay--blue-color;
+    &:hover{
+        background-color: lighten(@mindalay--blue-color, -5%);
+    }
+}
+
 .mindalay--footer-btn{
     background-color: @mindalay--dark-color;
     border: none;
@@ -82,11 +91,11 @@ button[type="button"]{
 
     &:before {
       transform: scale(1);
-      animation: blink 1.6s infinite linear;
+      animation: blink 1s infinite linear;
     }
 
     &:after {
-      animation: blink 1.6s 1.2s infinite linear;
+      animation: blink 1s .5s infinite linear;
     }
 }
 

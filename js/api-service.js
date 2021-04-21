@@ -13,11 +13,11 @@ function getLanguages() {
     });
 }
 
+translations = [];
 function getTranslations() {
-    translations = [];
-    getSiteTranslations().then(() => {
-        getDefaultTranslations().then(() => {
-            setGlobalTranslationToHTML();
+        return getSiteTranslations().then(() => {
+                getDefaultTranslations().then(() => {
+                    setGlobalTranslationToHTML();
         })
     })
 }
@@ -43,7 +43,6 @@ function setCookie(cname, cvalue, exdays) {
     var expires = "expires=" + d.toUTCString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
-
 
 function getSiteTranslations() {
     return new Promise((resolve, reject) => {
@@ -98,7 +97,7 @@ function setGlobalTranslationToHTML() {
 
         if (id && id.length) {
             var selectedTranslationId = translations.find(x => x.shortKey == id);
-            selectedTranslationId && $(this).append(selectedTranslationId.translation1);
+            selectedTranslationId && $(this).text(selectedTranslationId.translation1);
             return;
         }
 
@@ -110,12 +109,26 @@ function setGlobalTranslationToHTML() {
     });
 }
 
-function getTranslation(element, translationKey, translationValue){
-    element.attr(translationKey, translationValue);
+function getTranslation(element, translationKey, translationValue) {
+    element.attr(`${translationKey}`, `${translationValue}`);
     let translatedValue = setTranslation(translationValue)
-    translationKey.split('-')[1] == 'id' ? element.append(translatedValue) : element.attr(translationKey.split('-')[1], translatedValue)
+    translationKey.split('-')[1] == 'id' ? element.text(translatedValue) : element.attr(`${translationKey.split('-')[1]}`, `${translatedValue}`)
+    return element;
 }
 
-function setTranslation(translationValue){
-    return translations.find(x => x.shortKey == translationValue).translation1
+function setTranslation(translationValue) {
+    let translationData = translations.find(x => x.shortKey == translationValue);
+    return translationData && translationData.translation1
 }
+
+//******************************************************************//
+
+function InitSignalR(timeout) {
+    clearTimeout(correctUserTimeout);
+    reload = timeout != undefined;
+    if (timeout == undefined || timeout < 1000) timeout = 0;
+    correctUserTimeout = setTimeout(() => {
+        webinarScreen();
+    }, timeout);
+}
+  

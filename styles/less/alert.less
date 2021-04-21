@@ -1,0 +1,91 @@
+@import url("../less/constants.less");
+
+.show-alert {
+    transform: translateX(0) !important;
+    .transition;
+}
+
+.alert-wrapper {
+    position: fixed;
+    z-index: 1;
+    left: 10px;
+    bottom: 60px;
+
+    .user-entered {
+        padding-left: 1.75rem !important;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            background-color: @mindalay--green-color;
+        }
+    }
+
+    .alert {
+        position: relative;
+        padding: .75rem 1.25rem;
+        margin-bottom: .5rem;
+        border: 1px solid transparent;
+        border-radius: .25rem;
+        width: fit-content;
+        transform: translateX(-110%);
+        .transition;
+    }
+
+    .alert-success {
+        background-color: lighten(@mindalay--green-color, 55%);
+        color: lighten(@mindalay--green-color, -20%);
+    }
+
+    .alert-danger {
+        background-color: lighten(@mindalay--red-color, 45%);
+        color: lighten(@mindalay--red-color, -20%);
+    }
+
+    .alert-warning {
+        background-color: lighten(@mindalay--orange-color, 35%);
+        color: lighten(@mindalay--orange-color, -20%);
+    }
+
+    .alert-info {
+        background-color: lighten(@mindalay--blue-color, 45%);
+        color: lighten(@mindalay--blue-color, -20%);
+    }
+
+    .alert-dark {
+        background-color: lighten(@mindalay--dark-color, -5%);
+        color: @mindalay--white-color;
+    }
+}
+
+.connection-timer {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -150%);
+    display: flex;
+    background-color: whitesmoke;
+    padding: 8px 20px;
+    border-radius: 3px;
+    .transition;
+
+    p {
+        font-weight: 600;
+        margin-right: 10px;
+
+        &::after {
+            content: ':';
+        }
+    }
+}
+
+.connection-timer-show {
+    transform: translate(-50%, 10px) !important;
+}

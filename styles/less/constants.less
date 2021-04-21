@@ -6,6 +6,7 @@
 @mindalay--gray-color: #9c9c9c;
 @mindalay--blue-color: #2980B9;
 @mindalay--orange-color: #ff6700;
+@mindalay--black-color: black;
 
 @footer-icon-size-screen: 20px;
 @footer-icon-size-mobile: 16px;
@@ -24,9 +25,66 @@
 @popup-username-font-size-screen: 17px;
 @popup-username-font-size-mobile: 15px;
 
-@message-date-font-size: 11px;
+@message-date-font-size: 10px;
+@message-username-font-size: 11px;
 @message-text-font-size: @text-size-14;
 @border-radius-3: 3px;
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: lighten(@mindalay--gray-color, 30%);
+}
+
+::-webkit-scrollbar-thumb {
+    background: @mindalay--brand-color;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: lighten(@mindalay--brand-color, -5%);
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+strong,
+span,
+small,
+button {
+    margin: 0;
+    padding: 0;
+    .main-font;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+strong,
+span,
+small,
+button {
+    color: @mindalay--dark-color;
+    &::first-letter {
+        text-transform: capitalize;
+    }
+}
+
+a {
+    text-decoration: none;
+}
 
 .main-font{
     font-family: 'Didact Gothic', sans-serif;
@@ -41,4 +99,73 @@
 }
 hr{
     opacity: .7;
+}
+
+.align-items-center{
+    align-items: center;
+}
+
+.mindalay--brand-color-background {
+    background-color: @mindalay--brand-color  !important;
+}
+
+.mindalay--blue-color-background {
+    background-color: @mindalay--blue-color  !important;
+}
+
+.mindalay--gray-color-background {
+    background-color: @mindalay--gray-color  !important;
+}
+
+.mindalay--dark-color-background {
+    background-color: @mindalay--dark-color  !important;
+}
+
+.mindalay--green-color-background {
+    background-color: @mindalay--green-color  !important;
+}
+
+.mindalay--orange-color-background {
+    background-color: @mindalay--orange-color  !important;
+}
+
+.mindalay--red-color-background {
+    background-color: @mindalay--red-color  !important;
+}
+
+
+.brand-color {
+    color: @mindalay--brand-color  !important;
+}
+
+.blue-color {
+    color: @mindalay--blue-color  !important;
+}
+
+.green-color {
+    color: @mindalay--green-color  !important;
+}
+
+.dark-color {
+    color: @mindalay--dark-color  !important;
+}
+
+.gray-color {
+    color: @mindalay--gray-color  !important;
+}
+
+.orange-color {
+    color: @mindalay--orange-color  !important;
+}
+
+.red-color {
+    color: @mindalay--red-color;
+
+    * {
+        fill: @mindalay--red-color  !important;
+    }
+}
+
+.red-border{
+    border: 1px solid @mindalay--red-color !important;
 }

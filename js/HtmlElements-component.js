@@ -8,8 +8,8 @@ class HrLine{
 class HtmlElement{
     constructor(element, className = '', text = ''){
         element = $(document.createElement(element));
-        className !== '' ? $(element).attr('class', className) : ''
-        text !== '' ? $(element).text(text) : '';
+        $(element).attr('class', className)
+        $(element).text(text)
         return element;
     }
 }

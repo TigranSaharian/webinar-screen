@@ -1,25 +1,32 @@
 
-function getPreloader(preloader_message, preloader_leave_location){
+function getPreloader(preloader_leave_location){
     const loaderContainer = new HtmlElement('div', 'loader-container');
-    const loader =  new HtmlElement('div', 'load', null);
+    const loader =  new HtmlElement('div', 'load');
 
-    const loaderText = new HtmlElement('small',null, '')
-    loaderText.addClass('translation')
-    loaderText.attr('data-id', preloader_message)
-
-    const leave = new HtmlElement('a', `preloader-leave-action ${translation}`);
+    const leave = new HtmlElement('a', `preloader-leave-action ${TRANSLATION}`);
     leave.attr('href', preloader_leave_location)
-    leave.attr('data-id', TR_START_WEBINAR);
+    leave.attr(TRANSLATION_KEY_ID, TR_LOG_OUT);
 
-    const button = new Button('start-webinar', `${mindalayBtnDark} ${translation} ${preloader_btn}`, '', true, TRANSLATION_KEY_ID, TR_START_WEBINAR )
     for (let index = 0; index < 4; index++) {
         const loader_item = new HrLine()
         loader.append(loader_item);
     }
-
     loaderContainer.append(loader);
-    loaderContainer.append(loaderText);
-    if(isLecturer) loaderContainer.append(button[0]);
     loaderContainer.append(leave);
-    preloader.append(loaderContainer);
+    PRELOADER.append(loaderContainer);
+}
+
+function AddPreloaderButton(){
+    const button = new Button('start-webinar', `${MINDALAY_BUTTON_DARK} ${TRANSLATION} ${PRELOADER_BUTTON}`, '', true, TRANSLATION_KEY_ID, TR_START_WEBINAR )
+    $('.loader-container').append(button[0]);
+    getTranslation(button, TRANSLATION_KEY_ID, TR_START_WEBINAR)
+}
+
+
+function AddPreloaderText(preloaderMessage){
+    const loaderTextElement = new HtmlElement('small')
+    loaderTextElement.addClass(`${TRANSLATION}`)
+    loaderTextElement.attr('data-id', preloaderMessage)
+    $('.loader-container').append(loaderTextElement);
+    getTranslation(loaderTextElement, TRANSLATION_KEY_ID, preloaderMessage)
 }

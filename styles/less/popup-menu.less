@@ -25,9 +25,10 @@
             .counts-items{
                 margin-left: 5px;
             }
-            >p, strong,span{
-                color: @mindalay--white-color;
-            }.mindalay--chat-body-container
+            // >p, strong,span{
+            //     color: @mindalay--white-color;
+            // }
+            .mindalay--chat-body-container
             label{
                 cursor: pointer;
             }
@@ -36,7 +37,9 @@
             // position: absolute;
             // bottom: 0;
             // width: 100%;
-            // height: calc(100% - 60px);
+            height: calc(100% - 60px);
+            overflow: auto;
+            overflow-x: hidden;
             .mindalay--right-menu-items-wrapper{
                 // max-height: calc(100vh - 125px);
                 overflow-y: auto;
@@ -79,8 +82,8 @@
                             background-size: contain;
                             background-position: center;
                             background-repeat: no-repeat;
-                            background-color: lighten(@mindalay--gray-color, 30%);
-                            border: 1px solid lighten(@mindalay--gray-color, 20%);
+                            // background-color: lighten(@mindalay--gray-color, 30%);
+                            // border: 1px solid lighten(@mindalay--gray-color, 20%);
                         }
                     }
                     .mindlay--item-options-wrapper{
@@ -91,7 +94,6 @@
                         .mindlay--member-activity-timer{
                             padding: 10px;
                             margin: 0 3px;
-                            background-color: @mindalay--green-color;
                             color: @mindalay--white-color;
                             border-radius: @border-radius-3;
                             font-size: @text-size-13;
@@ -130,32 +132,44 @@
                 overflow: auto;
                 // padding: 10px 0;
                 height: calc(100vh - 200px);
+                .mindalay--same-user-message-wrapper{
+                    padding-bottom: 2px;
+                    display: flex;
+                }
                 .mindalay--chat-message-wrapper{
                     padding: 10px 15px;
                     display: flex;
-                    .mindalay--chat-message{
-                        background-color: lighten(@mindalay--gray-color, 32%);
-                        font-size: @message-text-font-size;
-                        border-radius: @border-radius-3;
-                        padding: 10px;
-                        min-width: 200px;
-                        .mindalay--chat-message-text{
-                            font-size: @text-size-14;
-                            margin-top: 5px;
-                        }
-                        .mindalay--chat-username{
-                            margin-bottom: 2px;
-                            display: block;
-                        }
-                        
+                    padding-bottom: 2px;
+                }
+                .mindalay--chat-message{
+                    background-color: lighten(@mindalay--gray-color, 35%);
+                    font-size: @message-text-font-size;
+                    border-radius: @border-radius-3;
+                    padding: 10px;
+                    min-width: 100px;
+                    max-width: 295px;
+                    .mindalay--chat-message-text{
+                        font-size: @text-size-14;
                     }
-                    .mindalay--chat-message-date{
-                        font-size: @message-date-font-size;
-                        font-weight: 600;
-                        margin-top: 5px;
-                        display: block;
-                        text-align: right;
-                    }
+                    
+                }
+                .mindalay--chat-username{
+                    margin-bottom: 2px;
+                    font-size: @message-username-font-size;
+                    opacity: .8;
+                    display: block;
+                }
+                .mindalay--chat-message-date{
+                    font-size: @message-date-font-size;
+                    font-weight: 600;
+                    margin-top: 5px;
+                    display: block;
+                    text-align: right;
+                    opacity: .5;
+                }
+                .mindalay--currnet-user.mindalay--same-user-message-wrapper{
+                    padding: 0 15px;
+                    padding-bottom: 2px;
                 }
                 .mindalay--currnet-user{
                     justify-content: flex-end;
@@ -163,18 +177,21 @@
                         background-color: lighten(@mindalay--blue-color, 50%) !important;
                     }
                 }
+
+                .mindalay--other-user.mindalay--same-user-message-wrapper{
+                    margin-left: 60px;
+                }
                 .mindalay--other-user{
-                    .mindalay--chat-message{
+                    .mindalay--chat-main-message{
                         position: relative;
                         &::before{
                             content: '';
                             position: absolute;
-                            top: 20px;
+                            top: 5px;
                             left: -5px;
-                            width: 10px;
-                            height: 10px;
-                            transform: rotate(45deg);
-                            background-color: lighten(@mindalay--gray-color, 32%);
+                            transform: rotate(315deg);
+                            border-top: solid 10px lighten(@mindalay--gray-color, 35%);
+                            border-right: solid 10px transparent;
                         }
                     }
                 }
@@ -251,16 +268,18 @@
         .mindalay--popup-body{
             padding: 5px 0;
             width: 100%;
-            li{
-                .popup-button{
-                    border: none;
-                    background-color: @mindalay--white-color;
-                    cursor: pointer;
+            .mindalay--popup-menu-item-wrapper{
+                cursor: pointer;
+                // width: 100%;
+                .mindalay--popup-button{
                     padding: 15px 20px;
-                    width: 100%;
                     display: flex;
                     align-items: center;
-                    font-size: @text-size-screen;
+                    button{
+                        font-size: @text-size-screen;
+                        background-color: transparent;
+                        border: none;
+                    }
                     svg{
                         width: 25px;
                         height: auto;
@@ -280,7 +299,8 @@
 }
 
 .mindalay--right-menu-item{
-    margin: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
     height: fit-content;
     .mindalay--member-default-image{
         justify-content: center;
@@ -323,10 +343,10 @@
         justify-content: space-between;
         width: calc(100% - 50px);
         label{
-            color: @mindalay--white-color;
+            color: @mindalay--dark-color;
         }
         p{
-            color: @mindalay--white-color;
+            color: @mindalay--dark-color;
         }
     }
     .mindalay--popup-close-button{
